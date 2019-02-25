@@ -1,3 +1,8 @@
+/**
+* Demo 1 code, which displays basic coordinate manipulation through user input.
+* Code created by Robert
+* Documented by Robert, documentation edited and added upon by Evan
+*/
 import java.util.Scanner;
 
 public class CoordinateSystem{
@@ -25,6 +30,7 @@ public class CoordinateSystem{
             if (key.equals("s") && ycoord > 0){
                 ycoord -= 1;
             }
+            //creates an artificial barrier at (6, 0) and (6, 1) when trying to move right on (5, 0) and (5, 1)
             if (key.equals("d") && xcoord < 10){
                 if (ycoord == 0 && xcoord == 5 || ycoord == 1 && xcoord == 5){
                     xcoord += 0;
@@ -37,7 +43,7 @@ public class CoordinateSystem{
                 xcoord += 0;
                 ycoord += 0;
             }
-            //output to show update coordinate
+            //output to show updated coordinate
             System.out.println("You're updated coordinate is: (" + xcoord + ", " + ycoord + ")" );
         }
         System.out.println("");

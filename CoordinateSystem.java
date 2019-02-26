@@ -25,10 +25,20 @@ public class CoordinateSystem{
                 ycoord += 1;
             }
             if (key.equals("a") && xcoord > 0){
-                xcoord -= 1;
+                if (ycoord == 0 && xcoord == 7 || ycoord == 1 && xcoord == 7){
+                    xcoord += 0;
+                    System.out.println("YOU HIT A WALL!!!");
+                } else {
+                    xcoord -= 1;
+                }
             }
             if (key.equals("s") && ycoord > 0){
-                ycoord -= 1;
+                if (ycoord == 2 && xcoord == 6){
+                    ycoord += 0;
+                    System.out.println("YOU HIT A WALL!!!");
+                } else {
+                    ycoord -= 1;
+                }
             }
             //creates an artificial barrier at (6, 0) and (6, 1) when trying to move right on (5, 0) and (5, 1)
             if (key.equals("d") && xcoord < 10){

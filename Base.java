@@ -1,9 +1,9 @@
 import java.awt.Canvas;
 import javax.swing.JFrame;
+import javax.swing.SwingUtilities;
 
 /*
-* Base code
-* By Evan
+*Loop code based off of and inspired by 'Teivodov'
 */
 
 public class Base extends Canvas implements Runnable{
@@ -77,7 +77,7 @@ public class Base extends Canvas implements Runnable{
 
       if (System.currentTimeMillis() - timer > 1000){
         timer += 1000;
-        System.out.println(ticks + "Ticks, FPS: " + frames);
+        System.out.println("Ticks: " + ticks + " FPS: " + frames);
         ticks = 0;
         frames = 0;
       }

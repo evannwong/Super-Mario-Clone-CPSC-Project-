@@ -65,6 +65,12 @@ public class Game{
       jumpPlayer();
     }
 
+    if (!isPressed(KeyCode.W)){
+      if (playerVelocity.getY() < -7){
+        playerVelocity = playerVelocity.add(0, 4);
+      }
+    }
+
     if (isPressed(KeyCode.A) && graphics.player.getTranslateX() >= 5){
       movePlayerX(-5);
     }

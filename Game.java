@@ -39,7 +39,7 @@ public class Game{
           case '0':
             break;
           case '1':
-            Node platform = graphics.createEntity(o*32, i*32, 32, 32, Color.BROWN);
+            Node platform = graphics.createEntity(o*32, i*32, 32, 32, Color.GREEN);
             environmentRoot.getChildren().add(platform);
             platforms.add(platform);
             break;
@@ -120,7 +120,8 @@ public class Game{
               return;
             }
           } else{
-            if (graphics.player.getTranslateY() == platform.getTranslateY() + 64){
+            if (graphics.player.getTranslateY() == platform.getTranslateY() + 32){
+              playerVelocity = playerVelocity.add(0, 4);
               return;
             }
           }
@@ -145,3 +146,4 @@ public class Game{
     return keys.getOrDefault(key, false);
   }
 }
+

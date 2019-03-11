@@ -1,5 +1,5 @@
 public abstract class BankAccount {
-    
+
     private double balance;
     private Customer accountHolder;
     private String accountNumber;
@@ -8,7 +8,7 @@ public abstract class BankAccount {
     Customer c = new Customer();
 
     public void setBalance(double bal){
-        this.balance = bal;
+      this.balance = bal;
     }
 
     public void monthEndUpdate(){
@@ -24,12 +24,12 @@ public abstract class BankAccount {
     }
 
     public void setAccountHolder(Customer accHold){
-        this.c = accHold;
+        this.accountHolder = accHold;
     }
 
     public void transfer(int b, BankAccount newacc){
         if (sufficientFunds(b)) {
-            this.balance -= b;
+            this.withdraw(b);
             newacc.deposit(b);
         }
     }
@@ -45,17 +45,17 @@ public abstract class BankAccount {
     }
 
     public void withdraw(double amount2) {
-        if (sufficientFunds(amount2)) {
+        if (sufficientFunds(amount2) && amount2 >= 0) {
             this.balance -= amount2;
         }
     }
 
     public String toString(){
-        return "(" + c.getName() + " " + c.getID() + ")" + " " + this.accountNumber + ": " + this.balance;
+        return "(" + accountHolder.getName() + " " + accountHolder.getID() + ")" + " " + this.accountNumber + ": " + this.balance;
     }
 
     public boolean sufficientFunds(double funds){
-        if (funds >= balance){
+        if (funds <= this.balance){
             return true;
         } else {
             return false;
@@ -65,30 +65,38 @@ public abstract class BankAccount {
     BankAccount() {
         this.balance = 0.0;
         this.accountNumber = "0001";
-        this.c = null;
+        this.accountHolder = null;
     }
 
     BankAccount(double bal) {
         this.balance = bal;
         this.accountNumber = "0001";
-        this.c = null;
+        this.accountHolder = null;
     }
 
     BankAccount(double bal, String acc) {
-        this.balance = bal;
+        if (bal >= 0){
+            this.balance = bal;
+          } else{
+            this.balance = 0.0;
+          }
         this.accountNumber = acc;
-        this.c = null;
+        this.accountHolder = null;
         }
-    
+
     BankAccount(Customer cust, double bal){
-        this.balance = bal;
+        if (bal >= 0){
+            this.balance = bal;
+        } else{
+            this.balance = 0.0;
+        }
         this.accountNumber = "0001";
-        this.c = cust;
+        this.accountHolder = cust;
     }
 
     BankAccount(BankAccount bankAcc) {
        this.accountNumber = bankAcc.getAccountNumber();
-       this.c = bankAcc.getAccountHolder();
+       this.accountHolder = bankAcc.getAccountHolder();
        this.balance = bankAcc.getBalance();
     }
 }

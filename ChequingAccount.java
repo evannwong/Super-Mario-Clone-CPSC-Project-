@@ -1,54 +1,69 @@
 public class ChequingAccount extends BankAccount{
-    
-    private double overdraftFee;
-    private double overdraftAmount;
+  private double overdraftFee;
+  private double overdraftAmount;
 
-    @Override
-    protected double getMonthlyFeesAndInterest() {
-        if (getBalance() >= 0){
-            return 0.0;
-        } else {
-            return getBalance() * 0.2;
-        }
+  public ChequingAccount(Customer c, double balance, double overdraftFee){
+    super(c, balance);
+    if (overdraftFee >= 0){
+      this.overdraftFee = overdraftFee;
+    } else{
+      this.overdraftFee = 1.0;
     }
+  }
 
-    @Override
-    public boolean sufficientFunds(double funds) {
-        return super.sufficientFunds(funds);
+  public void setOverdraftFee(double amount){
+    if (amount >= 0){
+      this.overdraftFee = amount;
+    } else{
+      return;
     }
+  }
 
-    @Override
-    public void withdraw(double amount2) {
-        if (getBalance() + overdraftAmount - amount2 >= 0){
-            super.withdraw(amount2 + overdraftFee);
-        }
+  public double getOverdraftFee(){
+    return this.overdraftFee;
+  }
+
+  public void setOverdraftAmount(double amount){
+    if (amount >= 0){
+      this.overdraftAmount = amount;
+    } else{
+      return;
     }
+  }
 
-    public double getOverdraftFee(){
-        return this.overdraftFee;
+  public double getOverdraftAmount(){
+    return this.overdraftAmount;
+  }
+
+  @Override
+  public boolean sufficientFunds(double amount){
+    boolean condition = true;
+    if (this.getBalance() - amount <= 0){
+      condition = true;
     }
-
-    public void setOverdraftFee(double fee){
-        if (fee >= 0){
-            this.overdraftFee = fee;
-        }
+    if (this.getBalance() - amount + this.overdraftAmount < 0){
+      condition = false;
     }
+    return condition;
+  }
 
-    public double getOverdraftAmount(){
-        return this.overdraftAmount;
+  @Override
+  public void withdraw(double amount){
+    if (this.getBalance() - amount < 0){
+      if (this.sufficientFunds(amount)){
+        super.withdraw(amount + overdraftFee);
+      }
+    } else{
+      super.withdraw(amount);
     }
+  }
 
-    public void setOverdraftAmount(double amount){
-        if (amount >= 0){
-            this.overdraftAmount = amount;
-        }
+  @Override
+  public double getMonthlyFeesAndInterest(){
+    if (this.getBalance() >= 0){
+      return 0;
+    } else{
+      return (this.getBalance() * 0.2);
     }
-
-    public ChequingAccount(Customer accHold, double bal, double overFee){
-        super(accHold, bal);
-        this.overdraftFee = overFee;
-        this. overdraftAmount = 0.0;
-    }
-
-
+  }
 }

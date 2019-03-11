@@ -1,12 +1,12 @@
 public class SavingsAccount extends BankAccount{
-    
-    private double annualInterestRate;
+
+    private double annualInterestRate = 0.05;
     private double minimumBalance;
-    private double balance = getBalance();
+
 
     @Override
     public double getMonthlyFeesAndInterest(){
-        return getBalance() * (this.annualInterestRate / 12);
+        return ((this.getBalance() * this.annualInterestRate) / 12);
     }
 
     public double getAnnualInterestRate(){
@@ -20,16 +20,18 @@ public class SavingsAccount extends BankAccount{
     public void setAnnualInterestRate(double intRate){
         if (intRate >= 0.0 && intRate <= 1){
         this.annualInterestRate = intRate;
-        }
+      } else{
+        this.annualInterestRate = 0.05;
+      }
     }
 
     public void setMinimumBalance(double minBal){
         this.minimumBalance = minBal;
     }
-    
+
     public void withdraw(double amount2) {
-        if (amount2 <= getBalance() && 0 <= amount2 && (getBalance() - amount2) >= minimumBalance) {
-            this.balance -= amount2;
+        if (amount2 <= getBalance() && 0 <= amount2 && (getBalance() - amount2) >= this.minimumBalance) {
+            super.withdraw(amount2);
         }
     }
 
@@ -39,22 +41,33 @@ public class SavingsAccount extends BankAccount{
     }
 
     public SavingsAccount(double annualInterestRate){
+      super();
+      if (annualInterestRate > 0){
         this.annualInterestRate = annualInterestRate;
+      } else{
+        this.annualInterestRate = 0.05;
+      }
     }
 
-    public SavingsAccount(double minBal, double annRate){
-        this.minimumBalance = minBal;
-        this.annualInterestRate =annRate;
+    public SavingsAccount(double bal, double annRate){
+        super(bal);
+        if (annualInterestRate > 0){
+          this.annualInterestRate = annRate;
+        } else{
+          this.annualInterestRate = 0.05;
+        }
     }
 
     public SavingsAccount(Customer c, double bal){
         super(c, bal);
-        this.balance = bal;
     }
 
     public SavingsAccount(Customer accountHolder, double balance, double annualInterestRate){
         super(accountHolder, balance);
-        this.annualInterestRate = annualInterestRate;
-        this.balance = balance;
+        if (annualInterestRate > 0){
+          this.annualInterestRate = annualInterestRate;
+        } else{
+          this.annualInterestRate = 0.05;
+        }
     }
 }

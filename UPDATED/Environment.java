@@ -2,7 +2,7 @@ import java.util.*;
 import javafx.application.Application;
 
 public class Environment{
-
+  /** This is the hard coded array of the level. Each number coresponds to a certain image that gets displayed in the window */
   public static final String[] LEVEL1 = new String[]{
   "3000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
   "0000000000000005000000000020000000050000000000000000000000000000050000000000000000000000000000000000",

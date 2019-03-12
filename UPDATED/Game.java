@@ -15,8 +15,8 @@ import javafx.scene.image.ImageView;
 public class Game{
   Graphics graphics = new Graphics();
 
-  private ArrayList<Node> platforms = new ArrayList<Node>();
-  private ArrayList<Node> coins = new ArrayList<Node>();
+  private ArrayList<Node> platforms = new ArrayList<Node>(); //List of all platforms in the environment.
+  private ArrayList<Node> coins = new ArrayList<Node>(); //List of all coins in the environment.
 
 
   public HashMap<KeyCode, Boolean> keys = new HashMap<KeyCode, Boolean>();
@@ -25,27 +25,27 @@ public class Game{
   private Pane environmentRoot = new Pane();
   private Pane menuRoot = new Pane();
 
-  private Point2D playerVelocity = new Point2D(0, 0);
+  private Point2D playerVelocity = new Point2D(0, 0); // X and Y momentum
   private boolean canJump = true;
 
   private int levelWidth;
 
+  /**
+  *Method for initializing the game window, and the environment.
+  */
   public void initContent(){
     appRoot.setPrefSize(800, 320);
     environmentRoot.setPrefSize(800, 320);
     menuRoot.setPrefSize(800, 320);
     
 
-    levelWidth = Environment.LEVEL1[0].length() * 32;
+    levelWidth = Environment.LEVEL1[0].length() * 32; // Checks the array in Environment.java and for each number, adds a different graphic.
 
     for (int i = 0; i < Environment.LEVEL1.length; i++){
       String line = Environment.LEVEL1[i];
       for (int o = 0; o < line.length(); o++){
         switch(line.charAt(o)){
           case '0':
-            /**Node sky = graphics.createSky(o*32, i*32, 32, 32);
-            environmentRoot.getChildren().add(sky);
-            platforms.add(sky);*/
             break;
           case '1':
             Node ground = graphics.createGround(o*32, i*32, 32, 32);
@@ -103,9 +103,12 @@ public class Game{
       }
     });
 
-    appRoot.getChildren().addAll(environmentRoot, menuRoot);
+    appRoot.getChildren().addAll(environmentRoot, menuRoot); // Adding the environment and the menu (not done yet) to the appRoot (window).
   }
 
+  /**
+  *Function that continuously checks for keypresses, and applies velocities such as X momentum and gravity.
+  */
   public void update(){
     if (isPressed(KeyCode.W)){
       jumpPlayer();
@@ -147,7 +150,11 @@ public class Game{
     }
     movePlayerX((int) playerVelocity.getX());
   }
-
+  
+  /**
+  *Moves the player by an int in the X axis, and checks for collisions with pixel-precision.
+  *Checks for collisions with coins.
+  */
   private void movePlayerX(int value){
     boolean movingRight = value > 0;
     for (int i = 0; i < Math.abs(value); i++){
@@ -175,6 +182,10 @@ public class Game{
     }
   }
 
+  /**
+  *Moves the player by an int in the Y axis, and checks for collisions with pixel-precision.
+  *Checks for collision with coin.
+  */
   private void movePlayerY(int value){
     boolean movingDown = value > 0;
     for (int i = 0; i < Math.abs(value); i++){
@@ -206,6 +217,9 @@ public class Game{
     }
   }
 
+  /**
+  *Checks if canJump is true, and if it is, adds upwards momentum and moves the player by that amount.
+  */
   private void jumpPlayer(){
     if (canJump){
       if (playerVelocity.getY() == 10){
@@ -215,6 +229,9 @@ public class Game{
     }
   }
 
+  /**
+  *Checks if any key is pressed, and returns either the key itself if it is true, or false otherwise.
+  */
   private boolean isPressed(KeyCode key){
     return keys.getOrDefault(key, false);
   }

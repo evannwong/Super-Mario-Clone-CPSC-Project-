@@ -14,7 +14,8 @@ import javafx.stage.Stage;
 public class Main extends Application{
 
   Game game = new Game();
-
+  
+  /** Sets the window for which the game is run. Also keeps track of user input */
   public void start(Stage primaryStage) throws Exception{
     game.initContent();
 
@@ -24,7 +25,8 @@ public class Main extends Application{
     primaryStage.setTitle("Mario");
     primaryStage.setScene(scene);
     primaryStage.show();
-
+    
+    /** A timer that keeps the game updated */
     AnimationTimer timer = new AnimationTimer(){
       @Override
       public void handle(long now){
@@ -34,6 +36,7 @@ public class Main extends Application{
     timer.start();
   }
 
+  /** Command used to run the game */
   public static void main(String[] args){
     launch(args);
   }

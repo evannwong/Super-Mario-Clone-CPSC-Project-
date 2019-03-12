@@ -16,7 +16,8 @@ Type 'A' and 'D' in the terminal, followed by the enter key to navigate left and
 # How to access and run DEMO2:
 Start by navigating to the branch named Demo2.
 Click the tab labeled 'Code' on the top of the page.
-Download all files in the branch by clicking on the green button on the top right.
+If you would like to try the older version, download Environment.java, Graphics.java, Game.java and Main.java straight from the Demo2 branch.
+If you would like to try the updated version with graphics, but no enemy, go into the Updated folder and download all of the files in the folder.
 Save it to your directory, and launch CMD.
 In CMD, navigate to the directory in which you save the downloaded java files by using CD *yourdirectoryhere*.
 Compile each java class by using javac *file name.java*.

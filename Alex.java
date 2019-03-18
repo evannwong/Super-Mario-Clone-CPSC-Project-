@@ -104,6 +104,21 @@ public class Alex extends Game{
           }
         }
       }
+      for (Node platform2 : platforms){
+        if (graphics.player.getBoundsInParent().intersects(platform2.getBoundsInParent())){
+          if (movingRight){
+            if (graphics.player.getTranslateX() + 32 == platform2.getTranslateX()){
+              graphics.player.setTranslateX(graphics.player.getTranslateX() - 1);
+              return;
+            }
+          } else{
+            if (graphics.player.getTranslateX() == platform2.getTranslateX() + 32){
+              graphics.player.setTranslateX(graphics.player.getTranslateX() + 1);
+              return;
+            }
+          }
+        }
+      }
       for (Node coin : coins){
         if (graphics.player.getBoundsInParent().intersects(coin.getBoundsInParent())){
           coin.setVisible(false);
@@ -123,13 +138,32 @@ public class Alex extends Game{
       for (Node platform : platforms){
         if (graphics.player.getBoundsInParent().intersects(platform.getBoundsInParent())){
           if (movingDown){
-            if (graphics.player.getTranslateY() + 30 == platform.getTranslateY()){
+            if (graphics.player.getTranslateY() + 60 == platform.getTranslateY()){
               graphics.player.setTranslateY(graphics.player.getTranslateY() - 1);
               canJump = true;
               return;
             }
           } else{
             if (graphics.player.getTranslateY() == platform.getTranslateY() + 30){
+              graphics.player.setTranslateY(graphics.player.getTranslateY() + 1);
+              playerVelocity = playerVelocity.add(0, 4);
+              return;
+            }
+          }
+        } else{
+          canJump = false;
+        }
+      }
+      for (Node platform2 : platforms){
+        if (graphics.player.getBoundsInParent().intersects(platform2.getBoundsInParent())){
+          if (movingDown){
+            if (graphics.player.getTranslateY() + 60 == platform2.getTranslateY()){
+              graphics.player.setTranslateY(graphics.player.getTranslateY() - 1);
+              canJump = true;
+              return;
+            }
+          } else{
+            if (graphics.player.getTranslateY() == platform2.getTranslateY() + 30){
               graphics.player.setTranslateY(graphics.player.getTranslateY() + 1);
               playerVelocity = playerVelocity.add(0, 4);
               return;

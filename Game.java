@@ -70,7 +70,6 @@ public abstract class Game{
           case '5':
             Node cloud = graphics.createCloud(o*32, i*32, 64, 32);
             environmentRoot.getChildren().add(cloud);
-            platforms.add(cloud);
             break;
           case '6':
             Node pipeMain = graphics.createPipeMain(o*32, i*32, 32, 32);
@@ -93,7 +92,7 @@ public abstract class Game{
     graphics.player.setTranslateX(30);
     graphics.player.setTranslateY(100);
     graphics.player.setFitWidth(32);
-    graphics.player.setFitHeight(30);
+    graphics.player.setFitHeight(60);
     environmentRoot.getChildren().add(graphics.player);
 
     graphics.player.translateXProperty().addListener((obs, old, newValue) -> {

@@ -13,7 +13,7 @@ import javafx.stage.Stage;
 import javafx.scene.image.ImageView;
 
 public class Alex extends Game{
-  private Point2D playerVelocity = new Point2D(0, 0); // X and Y momentum
+  protected static Point2D playerVelocity = new Point2D(0, 0); // X and Y momentum
   private boolean canJump = true;
 
 
@@ -92,12 +92,12 @@ public class Alex extends Game{
       for (Node platform : platforms){
         if (graphics.player.getBoundsInParent().intersects(platform.getBoundsInParent())){
           if (movingRight){
-            if (graphics.player.getTranslateX() + 32 == platform.getTranslateX()){
+            if (graphics.player.getTranslateX() + 28 == platform.getTranslateX()){
               graphics.player.setTranslateX(graphics.player.getTranslateX() - 1);
               return;
             }
           } else{
-            if (graphics.player.getTranslateX() == platform.getTranslateX() + 32){
+            if (graphics.player.getTranslateX() == platform.getTranslateX() + 28){
               graphics.player.setTranslateX(graphics.player.getTranslateX() + 1);
               return;
             }
@@ -107,12 +107,12 @@ public class Alex extends Game{
       for (Node platform2 : platforms){
         if (graphics.player.getBoundsInParent().intersects(platform2.getBoundsInParent())){
           if (movingRight){
-            if (graphics.player.getTranslateX() + 32 == platform2.getTranslateX()){
+            if (graphics.player.getTranslateX() + 28 == platform2.getTranslateX()){
               graphics.player.setTranslateX(graphics.player.getTranslateX() - 1);
               return;
             }
           } else{
-            if (graphics.player.getTranslateX() == platform2.getTranslateX() + 32){
+            if (graphics.player.getTranslateX() == platform2.getTranslateX() + 28){
               graphics.player.setTranslateX(graphics.player.getTranslateX() + 1);
               return;
             }
@@ -178,7 +178,23 @@ public class Alex extends Game{
           coin.setVisible(false);
         }
       }
+      for (int numG = 0; numG < goombas.size(); numG++){
+        if (goombas.get(numG).getBoundsInParent().intersects(graphics.player.getBoundsInParent())){
+          if (goombas.get(numG).getTranslateY() - 35 >= graphics.player.getTranslateY()){
+            if (playerVelocity.getY() < -7){
+              playerVelocity = playerVelocity.add(0, 4);
+            } else{
+              playerVelocity = playerVelocity.add(0, -7);
+              playerVelocity = playerVelocity.add(0, 4);
+            }
+          }
+        }
+      }
       graphics.player.setTranslateY(graphics.player.getTranslateY() + (movingDown ? 1 : -1));
     }
+  }
+
+  public void update2(){
+    super.update2();
   }
 }

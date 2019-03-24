@@ -18,10 +18,13 @@ public abstract class Game{
   protected ArrayList<Node> platforms = new ArrayList<Node>(); //List of all platforms in the environment.
   protected ArrayList<Node> coins = new ArrayList<Node>(); //List of all coins in the environment.
   protected ArrayList<Node> goombas = new ArrayList<Node>(); // List of all goombas.
-  protected ArrayList<Boolean> goombaLeft = new ArrayList<Boolean>(); // List of all goomba's direction.
+  private ArrayList<Boolean> goombaTrue = new ArrayList<Boolean>(); // List of all goomba's direction.
+  private ArrayList<Point2D> goombaGravity = new ArrayList<Point2D>(); // List of all goomba's gravity vectors.
 
   public HashMap<KeyCode, Boolean> keys = new HashMap<KeyCode, Boolean>();
 
+  private boolean goombaLeft = true;
+  private Point2D goombaVelocity = new Point2D(0, 0);
 
   protected Pane appRoot = new Pane();
   private Pane environmentRoot = new Pane();
@@ -84,6 +87,11 @@ public abstract class Game{
             platforms.add(platform4);
             break;
           case '8':
+            Node goomba = graphics.createEnemy(o*32, i*32);
+            environmentRoot.getChildren().add(goomba);
+            goombas.add(goomba);
+            goombaTrue.add(goombaLeft);
+            goombaGravity.add(goombaVelocity);
             break;
         }
       }
@@ -91,7 +99,7 @@ public abstract class Game{
 
     graphics.player.setTranslateX(30);
     graphics.player.setTranslateY(100);
-    graphics.player.setFitWidth(32);
+    graphics.player.setFitWidth(28);
     graphics.player.setFitHeight(60);
     environmentRoot.getChildren().add(graphics.player);
 
@@ -107,4 +115,71 @@ public abstract class Game{
   }
 
   public abstract void update();
+
+  public void update2(){
+    for (int numG = 0; numG < goombas.size(); numG++){
+      if (goombaGravity.get(numG).getY() < 1){
+        goombaGravity.set(numG, goombaGravity.get(numG).add(0, 1));
+      }
+      moveGoombaY();
+      goombas.get(numG).setTranslateY(goombas.get(numG).getTranslateY() + goombaGravity.get(numG).getY());
+      if (goombas.get(numG).getBoundsInParent().intersects(graphics.player.getBoundsInParent())){
+        if (goombas.get(numG).getTranslateY() - 35 >= graphics.player.getTranslateY()){
+          goombas.get(numG).setVisible(false);
+          goombas.get(numG).setTranslateY(goombas.get(numG).getTranslateY() + 100);
+        }
+      }
+      if (goombas.get(numG).getTranslateX() >= 1 && goombaTrue.get(numG) == true){
+        for (int i = 0; i < 1; i++){
+          for (Node platform : platforms){
+            if (goombas.get(numG).getBoundsInParent().intersects(platform.getBoundsInParent())){
+              if (goombaTrue.get(numG) == true){
+                if (goombas.get(numG).getTranslateX() == platform.getTranslateX() + 28){
+                  goombaTrue.set(numG, false);
+                  goombas.get(numG).setTranslateX(goombas.get(numG).getTranslateX() + 1);
+                  return;
+                }
+              }
+            }
+          }
+          goombas.get(numG).setTranslateX(goombas.get(numG).getTranslateX() - 1);
+        }
+      }
+      if (goombas.get(numG).getTranslateX() <= 1){
+        goombaTrue.set(numG, false);
+      }
+      if (goombas.get(numG).getTranslateX() + 28 >= levelWidth - 5){
+        goombaTrue.set(numG, true);
+      }
+      if (goombaTrue.get(numG) == false){
+        for (int i = 0; i < 1; i++){
+          for (Node platform : platforms){
+            if (goombas.get(numG).getBoundsInParent().intersects(platform.getBoundsInParent())){
+              if (goombaTrue.get(numG) == false){
+                if (goombas.get(numG).getTranslateX() + 28 == platform.getTranslateX()){
+                  goombaTrue.set(numG, true);
+                  goombas.get(numG).setTranslateX(goombas.get(numG).getTranslateX() - 1);
+                  return;
+                }
+              }
+            }
+          }
+          goombas.get(numG).setTranslateX(goombas.get(numG).getTranslateX() + 1);
+        }
+      }
+    }
+  }
+
+  public void moveGoombaY(){
+    for (int numG = 0; numG < goombas.size(); numG++){
+      for (Node platform : platforms){
+        if (goombas.get(numG).getBoundsInParent().intersects(platform.getBoundsInParent())){
+          if (goombas.get(numG).getTranslateY() + 30 == platform.getTranslateY()){
+            goombas.get(numG).setTranslateY(goombas.get(numG).getTranslateY() - 2);
+            return;
+          }
+        }
+      }
+    }
+  }
 }

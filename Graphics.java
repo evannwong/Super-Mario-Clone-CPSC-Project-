@@ -7,7 +7,18 @@ import javafx.scene.image.ImageView;
 public class Graphics{
   /** An ImageView is created in order to pull in the specific image to use for the character. The width, height, x coord, and y coord is set inside of Game.java */
   ImageView player = new ImageView("https://raw.githubusercontent.com/RMcCurdy/TeamProjectGroup14/master/Images/alejandro-2.png?token=ApkDjG3QpMdkdKtqJ4uwSCDIybeWTQbJks5cjg1RwA%3D%3D");
-  
+
+
+  /** Node created to pull in the image to use for the enemy. The dimensions and coordinates for the image are set inside of this method */
+  public ImageView createEnemy(int x, int y){
+    ImageView entity = new ImageView("https://raw.githubusercontent.com/RMcCurdy/TeamProjectGroup14/master/Images/goombaFIX.png");
+    entity.setTranslateX(x);
+    entity.setTranslateY(y);
+    entity.setFitWidth(28);
+    entity.setFitHeight(30);
+    return entity;
+  }
+
   /** Node created to set hit boxes and boundaries for the level*/
   public Node createEntity(int x, int y, int w, int h, Color color){
     Rectangle entity = new Rectangle(w, h);
@@ -22,8 +33,8 @@ public class Graphics{
     ImageView entity = new ImageView("https://raw.githubusercontent.com/RMcCurdy/TeamProjectGroup14/master/Images/brick.png?token=ApkDjG3QpMdkdKtqJ4uwSCDIybeWTQbJks5cjg1RwA%3D%3D");
     entity.setX(x);
     entity.setY(y);
-    entity.setFitHeight(w);
-    entity.setFitWidth(h);
+    entity.setFitHeight(h);
+    entity.setFitWidth(w);
     return entity;
   }
 
@@ -36,7 +47,7 @@ public class Graphics{
     coin.setFitHeight(h);
     return coin;
   }
-  
+
   /** Node created to pull in the image to use for the ground. The dimensions and coordinates for the image are set inside of this method */
   public Node createGround(int x, int y, int w, int h){
     ImageView ground = new ImageView("https://raw.githubusercontent.com/RMcCurdy/TeamProjectGroup14/master/Images/ground64by64.png?token=ApkDjG3QpMdkdKtqJ4uwSCDIybeWTQbJks5cjg1RwA%3D%3D");

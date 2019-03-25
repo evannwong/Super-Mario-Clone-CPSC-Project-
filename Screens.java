@@ -78,15 +78,15 @@ public class Screens extends Application {
     Image imageLvl4 = new Image("");
     Image imageLvl5 = new Image("");
 
-    ImageView lvl1 = new Imageview();
+    ImageView lvl1 = new ImageView();
     lvl1.setImage(imageLvl1);
-    ImageView lvl2 = new Imageview();
+    ImageView lvl2 = new ImageView();
     lvl2.setImage(imageLvl2);
-    ImageView lvl3 = new Imageview();
+    ImageView lvl3 = new ImageView();
     lvl3.setImage(imageLvl3);
-    ImageView lvl4 = new Imageview();
+    ImageView lvl4 = new ImageView();
     lvl4.setImage(imageLvl4);
-    ImageView lvl5 = new Imageview();
+    ImageView lvl5 = new ImageView();
     lvl5.setImage(imageLvl5);
     //Handle setOnMouseClicked
 
@@ -103,12 +103,5 @@ public class Screens extends Application {
     primaryStage.setTitle("Super Alejandro");
     primaryStage.setScene(menuScreen);
     primaryStage.show();
-// The root that shows the level selection
-//    Pane rootLevels = new Pane();
-
-//    Image levels = new Image("url");
-//    BackgroundImage levelsBackground = new BackgroundImage(levels, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.AUTO);
-//    rootLevels.setBackground(levelsBackground);
-//  }
   }
 }

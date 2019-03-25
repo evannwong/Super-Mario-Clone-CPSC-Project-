@@ -22,7 +22,7 @@ public class Main extends Application{
     Scene scene = new Scene(game.appRoot);
     scene.setOnKeyPressed(event -> game.keys.put(event.getCode(), true));
     scene.setOnKeyReleased(event -> game.keys.put(event.getCode(), false));
-    primaryStage.setTitle("Mario");
+    primaryStage.setTitle("Super Alejandro");
     primaryStage.setScene(scene);
     primaryStage.show();
 

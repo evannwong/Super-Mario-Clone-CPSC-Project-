@@ -99,6 +99,10 @@ public abstract class Game{
             Node back = graphics.createBack(0, 0, 3200, 640);
             environmentRoot.getChildren().add(back);
             break;
+          case 'B':
+            Node Fback = graphics.createFinalBack(0, 0, 3200, 640);
+            environmentRoot.getChildren().add(Fback);
+            break;
           case '4':
             Node brick = graphics.createBrick(o*32, i*32, 32, 32);
             Node platform2 = graphics.createEntity(o*32, i*32, 32, 32, Color.BROWN);

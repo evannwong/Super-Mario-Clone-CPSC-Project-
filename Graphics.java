@@ -58,6 +58,16 @@ public class Graphics{
     return ground;
   }
 
+  /** Node created to pull in the image to use for the ground. The dimensions and coordinates for the image are set inside of this method */
+  public Node createFinalGround(int x, int y, int w, int h){
+    ImageView Fground = new ImageView("https://raw.githubusercontent.com/RMcCurdy/TeamProjectGroup14/master/Images/bowserBrick.png?token=ApkDjG3QpMdkdKtqJ4uwSCDIybeWTQbJks5cjg1RwA%3D%3D");
+    Fground.setX(x);
+    Fground.setY(y);
+    Fground.setFitWidth(w);
+    Fground.setFitHeight(h);
+    return Fground;
+  }
+
   /** Node created to pull in the image to use for the cloud. The dimensions and coordinates for the image are set inside of this method */
   public Node createCloud(int x, int y, int w, int h){
     ImageView cloud = new ImageView("https://raw.githubusercontent.com/RMcCurdy/TeamProjectGroup14/master/Images/cloud32by64.png?token=ApkDjG3QpMdkdKtqJ4uwSCDIybeWTQbJks5cjg1RwA%3D%3D");
@@ -76,6 +86,16 @@ public class Graphics{
     back.setFitWidth(w);
     back.setFitHeight(h);
     return back;
+  }
+
+  /** Node created to pull in the image to use for the background. The dimensions and coordinates for the image are set inside of this method */
+  public Node createFinalBack(int x, int y, int w, int h){
+    ImageView Fback = new ImageView("https://raw.githubusercontent.com/RMcCurdy/TeamProjectGroup14/master/Images/wallUpdated.png?token=ApkDjG3QpMdkdKtqJ4uwSCDIybeWTQbJks5cjg1RwA%3D%3D");
+    Fback.setX(x);
+    Fback.setY(y);
+    Fback.setFitWidth(w);
+    Fback.setFitHeight(h);
+    return Fback;
   }
 
   /** Node created to pull in the image to use for the middle of the pipe. The dimensions and coordinates for the image are set inside of this method */

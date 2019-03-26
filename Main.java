@@ -16,7 +16,7 @@ import javafx.stage.WindowEvent;
 public class Main extends Application{
 
   Game enemy = new Enemy();
-  protected int level;
+  protected int level = 0;
 
   public Main(){
 
@@ -28,7 +28,7 @@ public class Main extends Application{
 
   /** Sets the window for which the game is run. Also keeps track of user input */
   public void start(Stage primaryStage) throws Exception{
-    enemy.initContent();
+    enemy.initContent(level);
     Platform.setImplicitExit(false);
 
     Scene scene = new Scene(enemy.appRoot);

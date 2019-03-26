@@ -99,11 +99,9 @@ public class Screens extends Application {
 
     lvl1.setOnMouseClicked(new EventHandler<MouseEvent>() {
       public void handle(MouseEvent me) {
-        menu.setScene(loadingScreen);
-        menu.show();
         try{
           Stage primaryStage = new Stage();
-          Main main = new Main();
+          Main main = new Main(1);
           main.start(primaryStage);
           menu.close();
         } catch(Exception e){}
@@ -112,12 +110,56 @@ public class Screens extends Application {
 
     ImageView lvl2 = new ImageView();
     lvl2.setImage(imageLvl2);
+
+    lvl2.setOnMouseClicked(new EventHandler<MouseEvent>() {
+      public void handle(MouseEvent me) {
+        try{
+          Stage primaryStage = new Stage();
+          Main main = new Main(2);
+          main.start(primaryStage);
+          menu.close();
+        } catch(Exception e){}
+      }
+    });
     ImageView lvl3 = new ImageView();
     lvl3.setImage(imageLvl3);
+
+    lvl3.setOnMouseClicked(new EventHandler<MouseEvent>() {
+      public void handle(MouseEvent me) {
+        try{
+          Stage primaryStage = new Stage();
+          Main main = new Main(3);
+          main.start(primaryStage);
+          menu.close();
+        } catch(Exception e){}
+      }
+    });
     ImageView lvl4 = new ImageView();
     lvl4.setImage(imageLvl4);
+
+    lvl4.setOnMouseClicked(new EventHandler<MouseEvent>() {
+      public void handle(MouseEvent me) {
+        try{
+          Stage primaryStage = new Stage();
+          Main main = new Main(4);
+          main.start(primaryStage);
+          menu.close();
+        } catch(Exception e){}
+      }
+    });
     ImageView lvl5 = new ImageView();
     lvl5.setImage(imageLvl5);
+
+    lvl5.setOnMouseClicked(new EventHandler<MouseEvent>() {
+      public void handle(MouseEvent me) {
+        try{
+          Stage primaryStage = new Stage();
+          Main main = new Main(5);
+          main.start(primaryStage);
+          menu.close();
+        } catch(Exception e){}
+      }
+    });
 
     lvl1.setFitWidth(90.0);
     lvl1.setFitHeight(90.0);

@@ -20,7 +20,6 @@ public abstract class Game{
   protected ArrayList<Node> goombas = new ArrayList<Node>(); // List of all goombas.
   protected ArrayList<Boolean> goombaTrue = new ArrayList<Boolean>(); // List of all goomba's direction.
   protected ArrayList<Point2D> goombaGravity = new ArrayList<Point2D>(); // List of all goomba's gravity vectors.
-  protected int amount = 0;
 
   public HashMap<KeyCode, Boolean> keys = new HashMap<KeyCode, Boolean>();
 
@@ -31,21 +30,56 @@ public abstract class Game{
   protected Pane environmentRoot = new Pane();
   private Pane menuRoot = new Pane();
 
-  protected int levelWidth;
+  protected int levelWidth = 0;
+  protected int levelHeight = 0;
+  String line = "";
 
   /**
   *Method for initializing the game window, and the environment.
   */
-  public void initContent(){
+  public void initContent(int level){
     appRoot.setPrefSize(800, 640);
     environmentRoot.setPrefSize(800, 640);
     menuRoot.setPrefSize(800, 640);
 
+    if (level == 1){
+      levelWidth = Environment.LEVEL1[0].length() * 32;
+      levelHeight = Environment.LEVEL1.length;
+    }
+    if (level == 2){
+      levelWidth = Environment.LEVEL2[0].length() * 32;
+      levelHeight = Environment.LEVEL2.length;
+    }
+    if (level == 3){
+      levelWidth = Environment.LEVEL3[0].length() * 32;
+      levelHeight = Environment.LEVEL3.length;
+    }
+    if (level == 4){
+      levelWidth = Environment.LEVEL4[0].length() * 32;
+      levelHeight = Environment.LEVEL4.length;
+    }
+    if (level == 5){
+      levelWidth = Environment.LEVEL5[0].length() * 32;
+      levelHeight = Environment.LEVEL5.length;
+    }
 
-    levelWidth = Environment.LEVEL1[0].length() * 32; // Checks the array in Environment.java and for each number, adds a different graphic.
-
-    for (int i = 0; i < Environment.LEVEL1.length; i++){
-      String line = Environment.LEVEL1[i];
+    for (int i = 0; i < levelHeight; i++){
+      System.out.println("Loading: " + i*5);
+      if (level == 1){
+        line = Environment.LEVEL1[i];
+      }
+      if (level == 2){
+        line = Environment.LEVEL2[i];
+      }
+      if (level == 3){
+        line = Environment.LEVEL3[i];
+      }
+      if (level == 4){
+        line = Environment.LEVEL4[i];
+      }
+      if (level == 5){
+        line = Environment.LEVEL5[i];
+      }
       for (int o = 0; o < line.length(); o++){
         switch(line.charAt(o)){
           case '0':
@@ -93,7 +127,6 @@ public abstract class Game{
             goombas.add(goomba);
             goombaTrue.add(goombaLeft);
             goombaGravity.add(goombaVelocity);
-            amount += 1;
             break;
         }
       }

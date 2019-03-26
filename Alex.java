@@ -184,8 +184,8 @@ public class Alex extends Game{
             if (playerVelocity.getY() < -7){
               playerVelocity = playerVelocity.add(0, 4);
             } else{
-              playerVelocity = playerVelocity.add(0, -7);
-              playerVelocity = playerVelocity.add(0, 4);
+              playerVelocity = new Point2D(0, 0);
+              playerVelocity = playerVelocity.add(0, -4);
             }
           }
           if (graphics.player.getTranslateX() == goombas.get(numG).getTranslateX() + 28){

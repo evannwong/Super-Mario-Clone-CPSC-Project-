@@ -37,7 +37,7 @@ public abstract class Game{
   /**
   *Method for initializing the game window, and the environment.
   */
-  public void initContent(int level){
+  public void initContent(int level, int skin){
     appRoot.setPrefSize(800, 640);
     environmentRoot.setPrefSize(800, 640);
     menuRoot.setPrefSize(800, 640);
@@ -148,6 +148,21 @@ public abstract class Game{
       }
     }
 
+    if (skin == 1){
+      graphics.player = new ImageView("https://raw.githubusercontent.com/RMcCurdy/TeamProjectGroup14/master/Images/alejandro-1.png");
+    }
+    if (skin == 2){
+      graphics.player = new ImageView("https://raw.githubusercontent.com/RMcCurdy/TeamProjectGroup14/master/Images/alejandro-2.png");
+    }
+    if (skin == 3){
+      graphics.player = new ImageView("https://raw.githubusercontent.com/RMcCurdy/TeamProjectGroup14/master/Images/alejandro-3.png");
+    }
+    if (skin == 4){
+      graphics.player = new ImageView("https://raw.githubusercontent.com/RMcCurdy/TeamProjectGroup14/master/Images/alejandro-4.png");
+    }
+    if (skin == 5){
+      graphics.player = new ImageView("https://raw.githubusercontent.com/RMcCurdy/TeamProjectGroup14/master/Images/alejandro-5.png");
+    }
     graphics.player.setTranslateX(30);
     graphics.player.setTranslateY(500);
     graphics.player.setFitWidth(28);

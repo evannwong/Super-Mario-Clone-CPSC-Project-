@@ -15,6 +15,8 @@ import javafx.scene.input.MouseEvent;
 
 
 public class Screens extends Application {
+  int skinSelected = 0;
+
   @Override
   public void start(Stage menu) throws Exception {
     Platform.setImplicitExit(false);
@@ -22,11 +24,11 @@ public class Screens extends Application {
 // The root that shows the main menu
     Pane rootMenu = new Pane();
     Pane rootLevels = new Pane();
-    Pane rootShop = new Pane();
+    Pane rootSkin = new Pane();
     Pane rootLoad = new Pane();
     Scene menuScreen = new Scene(rootMenu, 750.0, 480.0);
     Scene levelsScreen = new Scene(rootLevels, 750.0, 480.0);
-    Scene shopScreen = new Scene(rootShop, 750.0, 480.0);
+    Scene skinScreen = new Scene(rootSkin, 750.0, 480.0);
     Scene loadingScreen = new Scene(rootLoad, 750.0, 480.0);
 
 //Backgrounds
@@ -40,10 +42,10 @@ public class Screens extends Application {
     Background lBackground = new Background(levelsBackground);
     rootLevels.setBackground(lBackground);
 
-    Image shop = new Image("https://raw.githubusercontent.com/RMcCurdy/TeamProjectGroup14/master/Images/sample%20skins%20selection%20blank.png");
-    BackgroundImage shopBackground = new BackgroundImage(shop, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, new BackgroundSize(BackgroundSize.AUTO, BackgroundSize.AUTO, false, false, true, false));
-    Background sBackground = new Background(shopBackground);
-    rootShop.setBackground(sBackground);
+    Image skin = new Image("https://raw.githubusercontent.com/RMcCurdy/TeamProjectGroup14/master/Images/sample%20skins%20selection%20blank.png");
+    BackgroundImage skinBackground = new BackgroundImage(skin, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, new BackgroundSize(BackgroundSize.AUTO, BackgroundSize.AUTO, false, false, true, false));
+    Background sBackground = new Background(skinBackground);
+    rootSkin.setBackground(sBackground);
 
     Image load = new Image("https://static.giantbomb.com/uploads/scale_small/0/1978/427550-now_loading_2.jpg");
     BackgroundImage loadBackground = new BackgroundImage(load, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, new BackgroundSize(BackgroundSize.AUTO, BackgroundSize.AUTO, false, false, true, false));
@@ -68,18 +70,18 @@ public class Screens extends Application {
       }
     });
 
-    Image shopImage = new Image("https://raw.githubusercontent.com/RMcCurdy/TeamProjectGroup14/master/Images/skins.png");
-    ImageView shopButton = new ImageView();
-    shopButton.setImage(shopImage);
-    shopButton.setFitWidth(152.0);
-    shopButton.setFitHeight(60.0);
-    shopButton.setX(425);
-    shopButton.setY(307);
-    rootMenu.getChildren().add(shopButton);
+    Image skinImage = new Image("https://raw.githubusercontent.com/RMcCurdy/TeamProjectGroup14/master/Images/skins.png");
+    ImageView skinButton = new ImageView();
+    skinButton.setImage(skinImage);
+    skinButton.setFitWidth(152.0);
+    skinButton.setFitHeight(60.0);
+    skinButton.setX(425);
+    skinButton.setY(307);
+    rootMenu.getChildren().add(skinButton);
 
-    shopButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
+    skinButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
       public void handle(MouseEvent me) {
-        menu.setScene(shopScreen);
+        menu.setScene(skinScreen);
         menu.show();
       }
     });
@@ -101,7 +103,7 @@ public class Screens extends Application {
       public void handle(MouseEvent me) {
         try{
           Stage primaryStage = new Stage();
-          Main main = new Main(1);
+          Main main = new Main(1, skinSelected);
           main.start(primaryStage);
           menu.close();
         } catch(Exception e){}
@@ -115,7 +117,7 @@ public class Screens extends Application {
       public void handle(MouseEvent me) {
         try{
           Stage primaryStage = new Stage();
-          Main main = new Main(2);
+          Main main = new Main(2, skinSelected);
           main.start(primaryStage);
           menu.close();
         } catch(Exception e){}
@@ -128,7 +130,7 @@ public class Screens extends Application {
       public void handle(MouseEvent me) {
         try{
           Stage primaryStage = new Stage();
-          Main main = new Main(3);
+          Main main = new Main(3, skinSelected);
           main.start(primaryStage);
           menu.close();
         } catch(Exception e){}
@@ -141,7 +143,7 @@ public class Screens extends Application {
       public void handle(MouseEvent me) {
         try{
           Stage primaryStage = new Stage();
-          Main main = new Main(4);
+          Main main = new Main(4, skinSelected);
           main.start(primaryStage);
           menu.close();
         } catch(Exception e){}
@@ -154,7 +156,7 @@ public class Screens extends Application {
       public void handle(MouseEvent me) {
         try{
           Stage primaryStage = new Stage();
-          Main main = new Main(5);
+          Main main = new Main(5, skinSelected);
           main.start(primaryStage);
           menu.close();
         } catch(Exception e){}
@@ -208,7 +210,7 @@ public class Screens extends Application {
 
 
 
-//Shop screen
+//Skin screen
     Image backButton2 = new Image("https://raw.githubusercontent.com/RMcCurdy/TeamProjectGroup14/master/Images/backButton.png");
     ImageView bButton2 = new ImageView();
     bButton2.setImage(backButton2);
@@ -225,18 +227,56 @@ public class Screens extends Application {
     Image imageSkin1 = new Image("https://raw.githubusercontent.com/RMcCurdy/TeamProjectGroup14/master/Images/alejandro-1.png");
     ImageView skin1 = new ImageView();
     skin1.setImage(imageSkin1);
+    skin1.setOnMouseClicked(new EventHandler<MouseEvent>() {
+      public void handle(MouseEvent me) {
+        try{
+          skinSelected = 1;
+        } catch(Exception e){}
+      }
+    });
     Image imageSkin2 = new Image("https://raw.githubusercontent.com/RMcCurdy/TeamProjectGroup14/master/Images/alejandro-2.png");
     ImageView skin2 = new ImageView();
     skin2.setImage(imageSkin2);
+    skin2.setOnMouseClicked(new EventHandler<MouseEvent>() {
+      public void handle(MouseEvent me) {
+        try{
+          skinSelected = 2;
+        } catch(Exception e){}
+      }
+    });
+
     Image imageSkin3 = new Image("https://raw.githubusercontent.com/RMcCurdy/TeamProjectGroup14/master/Images/alejandro-3.png");
     ImageView skin3 = new ImageView();
     skin3.setImage(imageSkin3);
+    skin3.setOnMouseClicked(new EventHandler<MouseEvent>() {
+      public void handle(MouseEvent me) {
+        try{
+          skinSelected = 3;
+        } catch(Exception e){}
+      }
+    });
+
     Image imageSkin4 = new Image("https://raw.githubusercontent.com/RMcCurdy/TeamProjectGroup14/master/Images/alejandro-4.png");
     ImageView skin4 = new ImageView();
     skin4.setImage(imageSkin4);
+    skin4.setOnMouseClicked(new EventHandler<MouseEvent>() {
+      public void handle(MouseEvent me) {
+        try{
+          skinSelected = 4;
+        } catch(Exception e){}
+      }
+    });
+
     Image imageSkin5 = new Image("https://raw.githubusercontent.com/RMcCurdy/TeamProjectGroup14/master/Images/alejandro-5.png");
     ImageView skin5 = new ImageView();
     skin5.setImage(imageSkin5);
+    skin5.setOnMouseClicked(new EventHandler<MouseEvent>() {
+      public void handle(MouseEvent me) {
+        try{
+          skinSelected = 5;
+        } catch(Exception e){}
+      }
+    });
 
     skin1.setFitWidth(96.0);
     skin1.setFitHeight(186.0);
@@ -260,12 +300,12 @@ public class Screens extends Application {
     skin4.setX(443);
     skin5.setX(559);
 
-    rootShop.getChildren().add(skin1);
-    rootShop.getChildren().add(skin2);
-    rootShop.getChildren().add(skin3);
-    rootShop.getChildren().add(skin4);
-    rootShop.getChildren().add(skin5);
-    rootShop.getChildren().add(bButton2);
+    rootSkin.getChildren().add(skin1);
+    rootSkin.getChildren().add(skin2);
+    rootSkin.getChildren().add(skin3);
+    rootSkin.getChildren().add(skin4);
+    rootSkin.getChildren().add(skin5);
+    rootSkin.getChildren().add(bButton2);
 
     menu.setTitle("Super Alejandro");
     menu.setScene(menuScreen);

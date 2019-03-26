@@ -17,18 +17,20 @@ public class Main extends Application{
 
   Game enemy = new Enemy();
   protected int level = 0;
+  protected int skin = 0;
 
   public Main(){
 
   }
 
-  public Main(int aLevel){
+  public Main(int aLevel, int aSkin){
     level = aLevel;
+    skin = aSkin;
   }
 
   /** Sets the window for which the game is run. Also keeps track of user input */
   public void start(Stage primaryStage) throws Exception{
-    enemy.initContent(level);
+    enemy.initContent(level, skin);
     Platform.setImplicitExit(false);
 
     Scene scene = new Scene(enemy.appRoot);

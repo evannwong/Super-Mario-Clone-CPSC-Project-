@@ -29,11 +29,14 @@ public class Alex extends Game{
   */
   @Override
   public void update(){
+    if (graphics.player.getTranslateY() > 650){
+      die();
+    }
     if (isPressed(KeyCode.W)){
       jumpPlayer();
     }
 
-    if (isPressed(KeyCode.SHIFT) && isPressed(KeyCode.D) && playerVelocity.getX() <= 4 && graphics.player.getTranslateX() + 32 <= levelWidth - 5){
+    if (isPressed(KeyCode.SHIFT) && isPressed(KeyCode.D) && playerVelocity.getX() <= 4 && graphics.player.getTranslateX() + 28 <= levelWidth - 5){
       playerVelocity = playerVelocity.add(0.65, 0);
     }
 
@@ -51,7 +54,7 @@ public class Alex extends Game{
       movePlayerX(-3);
     }
 
-    if (isPressed(KeyCode.D) && graphics.player.getTranslateX() + 32 <= levelWidth - 5){
+    if (isPressed(KeyCode.D) && graphics.player.getTranslateX() + 28 <= levelWidth - 5){
       movePlayerX(3);
     }
 

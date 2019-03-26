@@ -3,6 +3,15 @@ import javafx.application.Application;
 
 public class Environment{
   /** This is the hard coded array of the level. Each number coresponds to a certain image that gets displayed in the window */
+  /** 0 = Air */
+  /** 1 = Ground */
+  /** 2 = Coin */
+  /** 3 = Background */
+  /** 4 = Brick */
+  /** 5 = Cloud */
+  /** 6 = Bottom Pipe */
+  /** 7 = Top pipe */
+  /** 8 = Goomba */
   public static final String[] LEVEL1 = new String[]{
   "3000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
   "0000000000000000000000000000000000050000000000000000000000000000050000000000000000000000000000000000",

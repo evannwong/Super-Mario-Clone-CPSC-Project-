@@ -90,6 +90,12 @@ public abstract class Game{
             environmentRoot.getChildren().add(ground);
             platforms.add(platform);
             break;
+          case 'G':
+            Node Fground = graphics.createFinalGround(o*32, i*32, 32, 32);
+            Node Fplatform = graphics.createEntity(o*32, i*32, 32, 32, Color.BROWN);
+            environmentRoot.getChildren().add(Fground);
+            platforms.add(Fplatform);
+            break;
           case '2':
             Node coin = graphics.createCoin(o*32, i*32, 32, 32);
             environmentRoot.getChildren().add(coin);
@@ -108,6 +114,12 @@ public abstract class Game{
             Node platform2 = graphics.createEntity(o*32, i*32, 32, 32, Color.BROWN);
             environmentRoot.getChildren().add(brick);
             platforms.add(platform2);
+            break;
+          case 'P':
+            Node Fbrick = graphics.createFinalBrick(o*32, i*32, 32, 32);
+            Node Fplatform2 = graphics.createEntity(o*32, i*32, 32, 32, Color.BROWN);
+            environmentRoot.getChildren().add(Fbrick);
+            platforms.add(Fplatform2);
             break;
           case '5':
             Node cloud = graphics.createCloud(o*32, i*32, 64, 32);

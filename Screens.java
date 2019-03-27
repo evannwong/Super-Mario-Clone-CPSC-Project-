@@ -86,6 +86,34 @@ public class Screens extends Application {
       }
     });
 
+    levelsButton.setOnMouseEntered(new EventHandler<MouseEvent>() {
+      public void handle(MouseEvent me) {
+        levelsButton.setOpacity(0.5);
+        menu.show();
+      }
+    });
+
+    levelsButton.setOnMouseExited(new EventHandler<MouseEvent>() {
+      public void handle(MouseEvent me) {
+        levelsButton.setOpacity(1.0);
+        menu.show();
+      }
+    });
+
+    skinButton.setOnMouseEntered(new EventHandler<MouseEvent>() {
+      public void handle(MouseEvent me) {
+        skinButton.setOpacity(0.5);
+        menu.show();
+      }
+    });
+
+    skinButton.setOnMouseExited(new EventHandler<MouseEvent>() {
+      public void handle(MouseEvent me) {
+        skinButton.setOpacity(1.0);
+        menu.show();
+      }
+    });
+
 
 
 
@@ -205,6 +233,121 @@ public class Screens extends Application {
     });
 
     rootLevels.getChildren().add(bButton);
+
+    lvl1.setOnMouseEntered(new EventHandler<MouseEvent>() {
+      public void handle(MouseEvent me) {
+        lvl2.setOpacity(0.5);
+        lvl3.setOpacity(0.5);
+        lvl4.setOpacity(0.5);
+        lvl5.setOpacity(0.5);
+        menu.show();
+      }
+    });
+
+    lvl1.setOnMouseExited(new EventHandler<MouseEvent>() {
+      public void handle(MouseEvent me) {
+        lvl2.setOpacity(1.0);
+        lvl3.setOpacity(1.0);
+        lvl4.setOpacity(1.0);
+        lvl5.setOpacity(1.0);
+        menu.show();
+      }
+    });
+
+    lvl2.setOnMouseEntered(new EventHandler<MouseEvent>() {
+      public void handle(MouseEvent me) {
+        lvl1.setOpacity(0.5);
+        lvl3.setOpacity(0.5);
+        lvl4.setOpacity(0.5);
+        lvl5.setOpacity(0.5);
+        menu.show();
+      }
+    });
+
+    lvl2.setOnMouseExited(new EventHandler<MouseEvent>() {
+      public void handle(MouseEvent me) {
+        lvl1.setOpacity(1.0);
+        lvl3.setOpacity(1.0);
+        lvl4.setOpacity(1.0);
+        lvl5.setOpacity(1.0);
+        menu.show();
+      }
+    });
+
+    lvl3.setOnMouseEntered(new EventHandler<MouseEvent>() {
+      public void handle(MouseEvent me) {
+        lvl1.setOpacity(0.5);
+        lvl2.setOpacity(0.5);
+        lvl4.setOpacity(0.5);
+        lvl5.setOpacity(0.5);
+        menu.show();
+      }
+    });
+
+    lvl3.setOnMouseExited(new EventHandler<MouseEvent>() {
+      public void handle(MouseEvent me) {
+        lvl1.setOpacity(1.0);
+        lvl2.setOpacity(1.0);
+        lvl4.setOpacity(1.0);
+        lvl5.setOpacity(1.0);
+        menu.show();
+      }
+    });
+
+    lvl4.setOnMouseEntered(new EventHandler<MouseEvent>() {
+      public void handle(MouseEvent me) {
+        lvl1.setOpacity(0.5);
+        lvl2.setOpacity(0.5);
+        lvl3.setOpacity(0.5);
+        lvl5.setOpacity(0.5);
+        menu.show();
+      }
+    });
+
+    lvl4.setOnMouseExited(new EventHandler<MouseEvent>() {
+      public void handle(MouseEvent me) {
+        lvl1.setOpacity(1.0);
+        lvl2.setOpacity(1.0);
+        lvl3.setOpacity(1.0);
+        lvl5.setOpacity(1.0);
+        menu.show();
+      }
+    });
+
+    lvl5.setOnMouseEntered(new EventHandler<MouseEvent>() {
+      public void handle(MouseEvent me) {
+        lvl1.setOpacity(0.5);
+        lvl2.setOpacity(0.5);
+        lvl3.setOpacity(0.5);
+        lvl4.setOpacity(0.5);
+        menu.show();
+      }
+    });
+
+    lvl5.setOnMouseExited(new EventHandler<MouseEvent>() {
+      public void handle(MouseEvent me) {
+        lvl1.setOpacity(1.0);
+        lvl2.setOpacity(1.0);
+        lvl3.setOpacity(1.0);
+        lvl4.setOpacity(1.0);
+        menu.show();
+      }
+    });
+
+    bButton.setOnMouseEntered(new EventHandler<MouseEvent>() {
+      public void handle(MouseEvent me) {
+        bButton.setOpacity(0.5);
+        menu.show();
+      }
+    });
+
+    bButton.setOnMouseExited(new EventHandler<MouseEvent>() {
+      public void handle(MouseEvent me) {
+        bButton.setOpacity(1.0);
+        menu.show();
+      }
+    });
+
 
 
 

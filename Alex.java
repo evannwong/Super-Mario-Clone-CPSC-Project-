@@ -71,6 +71,8 @@ public class Alex extends Game{
       playerVelocity = playerVelocity.add(-0.25, 0);
     }
     movePlayerX((int) playerVelocity.getX());
+
+    System.out.println(graphics.player.getTranslateX());
   }
 
   /**

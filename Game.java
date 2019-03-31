@@ -125,6 +125,11 @@ public abstract class Game{
             Node cloud = graphics.createCloud(o*32, i*32, 64, 32);
             environmentRoot.getChildren().add(cloud);
             break;
+          case 'F':
+            Node pole = graphics.createFlagPole(o*32, i*32, 32, 256);
+            environmentRoot.getChildren().add(pole);
+            coins.add(pole);
+            break;
           case '6':
             Node pipeMain = graphics.createPipeMain(o*32, i*32, 32, 32);
             Node platform3 = graphics.createEntity(o*32, i*32, 32, 32, Color.BROWN);

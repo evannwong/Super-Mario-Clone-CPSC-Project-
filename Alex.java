@@ -72,7 +72,8 @@ public class Alex extends Game{
     }
     movePlayerX((int) playerVelocity.getX());
 
-    System.out.println(graphics.player.getTranslateX());
+    /** Command to output the updated x-coordinate of the player in pixels */
+    //System.out.println(graphics.player.getTranslateX());
   }
 
   /**

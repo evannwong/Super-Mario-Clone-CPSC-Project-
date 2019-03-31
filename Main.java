@@ -41,7 +41,7 @@ public class Main extends Application{
               Platform.exit();
           }
       });
-    primaryStage.setTitle("Mario");
+    primaryStage.setTitle("Super Alejandro");
     primaryStage.setScene(scene);
     primaryStage.show();
 

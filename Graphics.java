@@ -127,4 +127,14 @@ public class Graphics{
     pipeT.setFitHeight(h);
     return pipeT;
   }
+
+  /** Node created to pull in the image to use for the flag pole. The dimensions and coordinates for the image are set inside of this method */
+  public Node createFlagPole(int x, int y, int w, int h){
+    ImageView pole = new ImageView("https://raw.githubusercontent.com/RMcCurdy/TeamProjectGroup14/master/Images/flagpole.png?token=ApkDjG3QpMdkdKtqJ4uwSCDIybeWTQbJks5cjg1RwA%3D%3D");
+    pole.setX(x);
+    pole.setY(y);
+    pole.setFitWidth(w);
+    pole.setFitHeight(h);
+    return pole;
+  }
 }

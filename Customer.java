@@ -1,45 +1,63 @@
-public class Customer {
+import java.io.*;
 
-    private String name;
-    private int customerID;
+public class Customer{
+  String name;
+  int customerID;
 
-    public void setName(String nam){
-        this.name = nam;
+
+  public Customer(){
+    String name = "Customer";
+    int customerID = 0;
+  }
+
+  public Customer(Customer c){
+    this.name = c.name;
+    this.customerID = c.customerID;
+  }
+
+  public void setName(String GivenName){
+    this.name = GivenName;
+  }
+
+  public Customer(String GivenName, int ID){
+    this.name = GivenName;
+    this.customerID = ID;
+  }
+
+  public Customer(BufferedReader reader) throws IOException {
+		String line1 = reader.readLine();
+		if ((line1 == null) || line1.equals("null")){
+		  throw new IOException("Customer is null in file");
+		} else{
+		  this.name = line1;
+		  String line2 = reader.readLine();
+		  if ((line2 == null) || (line2 == "null")) {
+		    throw new IOException("No customer ID found in file");
+		  } else{
+		    this.customerID = Integer.parseInt(line2);
+		  }
+		}
+  }
+
+  public String getName(){
+    return this.name;
+  }
+
+  public int getID(){
+    return this.customerID;
+  }
+
+  public String toString(){
+    String stringVar = this.name + " " + this.customerID;
+    return stringVar;
+  }
+
+  public void save(PrintWriter write){
+    try{
+      write.println(this.name);
+      write.println(this.customerID);
+    } catch(Exception e){
+      System.out.println("No customer ID found in file");
     }
-
-    public String getName(){
-        return this.name;
-    }
-
-    public void setID(int custID){
-        this.customerID = custID;
-    }
-
-    public int getID(){
-        return this.customerID;
-    }
-
-    public String toString(){
-        return this.name + " " + this.customerID;
-    }
-
-    Customer(){
-        this.customerID = 0;
-        this.name = "";
-    }
-
-    Customer(String nam){
-        this.customerID = 0;
-        this.name = nam;
-    }
-
-    Customer(String nam, int ID){
-        this.customerID = ID;
-        this.name = nam;
-    }
-
-    Customer(Customer custInfo){
-        this.name = custInfo.getName();
-        this.customerID = custInfo.getID();
-    }
+  }
 }

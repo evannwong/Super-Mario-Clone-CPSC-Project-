@@ -1,102 +1,127 @@
-public abstract class BankAccount {
+import java.util.*;
+import java.io.*;
+import java.lang.Math;
 
-    private double balance;
-    private Customer accountHolder;
-    private String accountNumber;
+public abstract class BankAccount{
+  private double balance;
+  private String accountNumber;
+  private Customer accountHolder;
 
-    protected abstract double getMonthlyFeesAndInterest();
-    Customer c = new Customer();
-
-    public void setBalance(double bal){
-      this.balance = bal;
+  public void transfer(int a, BankAccount b){
+    if (this.getBalance() >= a){
+      b.deposit(a);
+      this.withdraw(a);
     }
+  }
 
-    public void monthEndUpdate(){
-        this.setBalance(this.getBalance() + this.getMonthlyFeesAndInterest());
+  public Customer getAccountHolder() throws NullPointerException{
+    return this.accountHolder;
+  }
+
+  public void setAccountHolder(Customer account){
+    this.accountHolder = account;
+  }
+
+  public BankAccount(){
+    Random rand = new Random();
+    balance = 0.0;
+    accountNumber = String.format("%04d", rand.nextInt(9999) + 1);
+  }
+
+  public BankAccount(BankAccount b){
+    this.balance = b.balance;
+    this.accountNumber = b.accountNumber;
+    this.accountHolder = b.accountHolder;
+  }
+
+  public BankAccount(double initialAmount){
+    Random rand = new Random();
+    balance = initialAmount;
+    accountNumber = String.format("%04d", rand.nextInt(9999) + 1);
+  }
+
+  public BankAccount(double initialAmount, String givenAccountNumber){
+    balance = initialAmount;
+    accountNumber = givenAccountNumber;
+  }
+
+  public BankAccount(Customer givenHolder, double initialAmount){
+    balance = initialAmount;
+    this.accountHolder = givenHolder;
+  }
+
+  public BankAccount(BufferedReader reader)
+    throws IOException
+  {
+    String line1 = reader.readLine();
+    if ((line1 == null) || (line1.equals("null"))){
+      this.balance = 0.0;
+    } else{
+      line1 = String.valueOf(line1);
+      this.balance = Double.parseDouble(line1);
     }
-
-    public double getBalance() {
-        return this.balance;
+    String line2 = reader.readLine();
+    if ((line2 == null) || (line2.equals("null"))){
+      this.accountNumber = null;
+    } else{
+      this.accountNumber = line2;
     }
-
-    public Customer getAccountHolder(){
-        return this.accountHolder;
+    try{
+      this.accountHolder = new Customer(reader);
+    } catch (IOException localIOException){
+      setAccountHolder(null);
     }
+  }
 
-    public void setAccountHolder(Customer accHold){
-        this.accountHolder = accHold;
+  public double getBalance(){
+    return this.balance;
+  }
+
+  public String getAccountNumber(){
+    return accountNumber;
+  }
+
+  public String toString(){
+    String string = "(" + this.accountHolder + ") " + this.accountNumber + ": " + this.balance;
+    return string;
+  }
+
+  public void deposit(double amount){
+    if (amount > 0){
+      balance += amount;
+      balance = Math.round(balance * 100);
+      balance = balance/100;
     }
+  }
 
-    public void transfer(int b, BankAccount newacc){
-        if (sufficientFunds(b)) {
-            this.withdraw(b);
-            newacc.deposit(b);
-        }
+  public void withdraw(double amount){
+    if (amount > 0 && amount <= balance){
+      balance -= amount;
+      balance = Math.round(balance * 100);
+      balance = balance/100;
     }
+  }
 
-    public String getAccountNumber() {
-        return this.accountNumber;
+  protected abstract double getMonthlyFeesAndInterest();
+
+  public void monthEndUpdate(){
+    double temp = this.getMonthlyFeesAndInterest();
+    this.balance += temp;
+  }
+
+  public void saveToTextFile(String fileName) throws IOException{
+    PrintWriter writer = new PrintWriter(fileName);
+    writer.println(this.balance);
+    if (this.accountNumber == null || this.accountNumber.equals("null")){
+      writer.println();
+    } else{
+      writer.println(this.accountNumber);
     }
-
-    public void deposit(double amount1) {
-        if (amount1 >= 0) {
-        this.balance += amount1;
-        }
+    if (this.accountHolder == null){
+      writer.println("null");
+    } else{
+      accountHolder.save(writer);
     }
-
-    public void withdraw(double amount2) {
-        if (sufficientFunds(amount2) && amount2 >= 0) {
-            this.balance -= amount2;
-        }
-    }
-
-    public String toString(){
-        return "(" + accountHolder.getName() + " " + accountHolder.getID() + ")" + " " + this.accountNumber + ": " + this.balance;
-    }
-
-    public boolean sufficientFunds(double funds){
-        if (funds <= this.balance){
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    BankAccount() {
-        this.balance = 0.0;
-        this.accountNumber = "0001";
-        this.accountHolder = null;
-    }
-
-    BankAccount(double bal) {
-        this.balance = bal;
-        this.accountNumber = "0001";
-        this.accountHolder = null;
-    }
-
-    BankAccount(double bal, String acc) {
-        if (bal >= 0){
-            this.balance = bal;
-          } else{
-            this.balance = 0.0;
-          }
-        this.accountNumber = acc;
-        this.accountHolder = null;
-        }
-
-    BankAccount(Customer cust, double bal){
-        if (bal >= 0){
-            this.balance = bal;
-        } else{
-            this.balance = 0.0;
-        }
-        this.accountNumber = "0001";
-        this.accountHolder = cust;
-    }
-
-    BankAccount(BankAccount bankAcc) {
-       this.accountNumber = bankAcc.getAccountNumber();
-       this.accountHolder = bankAcc.getAccountHolder();
-       this.balance = bankAcc.getBalance();
-    }
+    writer.close();
+  }
 }

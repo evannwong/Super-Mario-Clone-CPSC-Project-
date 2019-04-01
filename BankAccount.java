@@ -3,10 +3,12 @@ import java.io.*;
 import java.lang.Math;
 
 public abstract class BankAccount{
+  /** Instance variables for BankAccount class */
   private double balance;
   private String accountNumber;
   private Customer accountHolder;
 
+  /** Method to transfer money to a different account */
   public void transfer(int a, BankAccount b){
     if (this.getBalance() >= a){
       b.deposit(a);
@@ -14,32 +16,38 @@ public abstract class BankAccount{
     }
   }
 
+  /** Method of type Customer that returns the account holder */
   public Customer getAccountHolder() throws NullPointerException{
     return this.accountHolder;
   }
 
+  /** Method to set the name of the account holder */
   public void setAccountHolder(Customer account){
     this.accountHolder = account;
   }
 
+  /** Default constructor for the bank account class */
   public BankAccount(){
     Random rand = new Random();
     balance = 0.0;
     accountNumber = String.format("%04d", rand.nextInt(9999) + 1);
   }
 
+  /** Copy constructor for the bank account class */
   public BankAccount(BankAccount b){
     this.balance = b.balance;
     this.accountNumber = b.accountNumber;
     this.accountHolder = b.accountHolder;
   }
 
+  /** Constructor that takes in a double as an argument */
   public BankAccount(double initialAmount){
     Random rand = new Random();
     balance = initialAmount;
     accountNumber = String.format("%04d", rand.nextInt(9999) + 1);
   }
 
+  /** Constructor that takes in a double and a String as an argument */
   public BankAccount(double initialAmount, String givenAccountNumber){
     balance = initialAmount;
     accountNumber = givenAccountNumber;

@@ -15,6 +15,7 @@ import javafx.scene.image.ImageView;
 public abstract class Game{
   Graphics graphics = new Graphics();
 
+  protected ArrayList<Node> poles = new ArrayList<Node>(); //List of all poles in the environment
   protected ArrayList<Node> platforms = new ArrayList<Node>(); //List of all platforms in the environment.
   protected ArrayList<Node> coins = new ArrayList<Node>(); //List of all coins in the environment.
   protected ArrayList<Node> goombas = new ArrayList<Node>(); // List of all goombas.
@@ -128,7 +129,8 @@ public abstract class Game{
           case 'F':
             Node pole = graphics.createFlagPole(o*32, i*32, 32, 256);
             environmentRoot.getChildren().add(pole);
-            coins.add(pole);
+            //change below to make it its own identity, where you come in contact with the pole and it resets the game
+            poles.add(pole);
             break;
           case '6':
             Node pipeMain = graphics.createPipeMain(o*32, i*32, 32, 32);

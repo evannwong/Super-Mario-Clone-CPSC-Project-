@@ -15,7 +15,6 @@ import javafx.scene.image.ImageView;
 public class Alex extends Game{
   protected static Point2D playerVelocity = new Point2D(0, 0); // X and Y momentum
   private boolean canJump = true;
-  public int coinCounter = 0;
 
 
   /**
@@ -129,13 +128,12 @@ public class Alex extends Game{
       for (Node coin : coins){
         if (graphics.player.getBoundsInParent().intersects(coin.getBoundsInParent())){
           coin.setVisible(false);
-          coinCounter += 1;
-          if (coinCounter == 20){
-            System.out.println("Congratulations you have collected all the coins on the level!");
-          }
-          else{
-            System.out.println("Coin collected: " + coinCounter);
-          }
+        }
+      }
+      for (Node pole : poles){
+        if (graphics.player.getBoundsInParent().intersects(pole.getBoundsInParent())){
+          //edit to make the game close and re-open java Screens
+          die();
         }
       }
       graphics.player.setTranslateX(graphics.player.getTranslateX() + (movingRight ? 1 : -1));
@@ -190,13 +188,13 @@ public class Alex extends Game{
       for (Node coin : coins){
         if (graphics.player.getBoundsInParent().intersects(coin.getBoundsInParent())){
           coin.setVisible(false);
-          coinCounter += 1;
-          if (coinCounter == 20){
-            System.out.println("Congratulations you have collected all the coins on the level!");
-          }
-          else{
-            System.out.println("Coin collected: " + coinCounter);
-          }
+        }
+      }
+      //change from platforms to "pole"
+      for (Node pole : poles){
+        if (graphics.player.getBoundsInParent().intersects(pole.getBoundsInParent())){
+          //edit to make the game close and re-open java Screens
+          die();
         }
       }
       for (int numG = 0; numG < goombas.size(); numG++){

@@ -1,7 +1,10 @@
 public class ChequingAccount extends BankAccount{
+  
+  /** Instance variables for the ChequingAccount class */
   private double overdraftFee;
   private double overdraftAmount;
-
+  
+  /** Constructor that take in a Customer, and two doubles */
   public ChequingAccount(Customer c, double balance, double overdraftFee){
     super(c, balance);
     if (overdraftFee >= 0){
@@ -11,6 +14,7 @@ public class ChequingAccount extends BankAccount{
     }
   }
 
+  /** Method that sets the overdraft fee amount that takes a double as an argument */
   public void setOverdraftFee(double amount){
     if (amount >= 0){
       this.overdraftFee = amount;
@@ -18,11 +22,13 @@ public class ChequingAccount extends BankAccount{
       return;
     }
   }
-
+  
+  /** Method that returns the overdraft fee */
   public double getOverdraftFee(){
     return this.overdraftFee;
   }
 
+  /** Method that sets the overdraft fee amount that takes a double as an argument */
   public void setOverdraftAmount(double amount){
     if (amount >= 0){
       this.overdraftAmount = amount;
@@ -31,10 +37,12 @@ public class ChequingAccount extends BankAccount{
     }
   }
 
+  /** Method that returns the overdraft amount */
   public double getOverdraftAmount(){
     return this.overdraftAmount;
   }
 
+  /** Overrideen method that checks to see if the account has sufficient funds */
   @Override
   public boolean sufficientFunds(double amount){
     boolean condition = true;
@@ -46,7 +54,8 @@ public class ChequingAccount extends BankAccount{
     }
     return condition;
   }
-
+  
+/** Overrideen method that withdraws from the balance. A double is passed through as an argument */
   @Override
   public void withdraw(double amount){
     if (this.getBalance() - amount < 0){
@@ -58,6 +67,7 @@ public class ChequingAccount extends BankAccount{
     }
   }
 
+  /** Overridden method that returns the monthly fees and interest */
   @Override
   public double getMonthlyFeesAndInterest(){
     if (this.getBalance() >= 0){

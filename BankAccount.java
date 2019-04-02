@@ -53,11 +53,13 @@ public abstract class BankAccount{
     accountNumber = givenAccountNumber;
   }
 
+  /** Constructor that takes in a Customer and a double as an argument */
   public BankAccount(Customer givenHolder, double initialAmount){
     balance = initialAmount;
     this.accountHolder = givenHolder;
   }
 
+  /** Constructor that takes in a character-input stream */
   public BankAccount(BufferedReader reader)
     throws IOException
   {
@@ -81,19 +83,23 @@ public abstract class BankAccount{
     }
   }
 
+  /** Method to get the balance */
   public double getBalance(){
     return this.balance;
   }
 
+  /** Method to get the account number */
   public String getAccountNumber(){
     return accountNumber;
   }
 
+  /** Method that returns a string with the information about the bank account */
   public String toString(){
     String string = "(" + this.accountHolder + ") " + this.accountNumber + ": " + this.balance;
     return string;
   }
 
+  /** Method to add money to the balance */
   public void deposit(double amount){
     if (amount > 0){
       balance += amount;
@@ -102,6 +108,7 @@ public abstract class BankAccount{
     }
   }
 
+  /** Method to subtract money from the balance */
   public void withdraw(double amount){
     if (amount > 0 && amount <= balance){
       balance -= amount;
@@ -110,13 +117,16 @@ public abstract class BankAccount{
     }
   }
 
+  /** Abstratc method for getting the monthly fees and interest */
   protected abstract double getMonthlyFeesAndInterest();
 
+  /** Method to update the balance from the monthly fees and interest */
   public void monthEndUpdate(){
     double temp = this.getMonthlyFeesAndInterest();
     this.balance += temp;
   }
 
+  /** Method to write out on to a text file */
   public void saveToTextFile(String fileName) throws IOException{
     PrintWriter writer = new PrintWriter(fileName);
     writer.println(this.balance);

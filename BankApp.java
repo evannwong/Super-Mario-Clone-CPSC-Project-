@@ -16,7 +16,8 @@ import java.lang.Thread;
 import javafx.scene.image.ImageView;
 
 public class BankApp extends Application {
-
+  
+  /** Instance variables for the BankApp class */
   public static BankAccount bankAcc;
   public TextField enteredAmount;
   public Label displayedAmount;
@@ -26,14 +27,17 @@ public class BankApp extends Application {
   public static double thisIntRate;
   private static boolean hasAName = false;
 
+  /** Default constructor for the BankApp class */
   public BankApp(){
 
   }
 
+  /** Command to launch the app */
   public static void main(String[] args) throws FileNotFoundException{
     launch(args);
   }
 
+  /** Overridden method that pulls in information from a text file about the bank account */
     @Override
     public void start(Stage primaryStage) throws Exception{
       try{
@@ -47,6 +51,7 @@ public class BankApp extends Application {
         bankAcc = new SavingsAccount(new Customer("Temp", 0000), 0);
       }
 
+      /** Scenes and gridpanes used for displaying the app */
       GridPane root1 = new GridPane();
 
       GridPane root2 = new GridPane();
@@ -58,6 +63,7 @@ public class BankApp extends Application {
       root1.setStyle("-fx-background-image: url('https://image.shutterstock.com/image-photo/piggy-bank-on-blue-background-260nw-472360912.jpg')");
       root2.setStyle("-fx-background-image: url('https://image.shutterstock.com/image-photo/piggy-bank-on-blue-background-260nw-472360912.jpg')");
 
+      /** Labels used in the GUI */
       Label Labelbalance = new Label("Balance:");
       Label LabelNoName = new Label("No account information found." + "\n" + " To start a new account, please enter your name: ");
       Label Labelwarning = new Label("");
@@ -85,6 +91,7 @@ public class BankApp extends Application {
         }
       });
 
+      /** Withdraw button and commands that run when the button is clicked. These commands check for whether or not a withdraw is possible */
       Button Buttonwithdraw = new Button("Withdraw");
       Buttonwithdraw.setOnAction(new EventHandler<ActionEvent>(){
         public void handle(ActionEvent e){
@@ -106,6 +113,7 @@ public class BankApp extends Application {
         }
       });
 
+      /** Button to enter the ammount in the text box */
       Button enterButton = new Button("Enter");
       enterButton.setOnAction(new EventHandler<ActionEvent>(){
         public void handle(ActionEvent e){
@@ -122,6 +130,7 @@ public class BankApp extends Application {
             root1.setVgap(5); // Set a gap of pixels vertically and horizontally between elements
             root1.setHgap(10);
 
+            /** Label positioning in the GUI */
             root1.add(LabelaccHold,0,0);
             GridPane.setHalignment(LabelaccHold, javafx.geometry.HPos.CENTER);
 
@@ -164,6 +173,7 @@ public class BankApp extends Application {
           }
       });
 
+      /** Alignment for the labels */
       if (hasAName == true){
         root1.setPadding(new Insets(10, 10, 10, 10)); // Insets of 10
         root1.setVgap(5); // Set a gap of pixels vertically and horizontally between elements
@@ -209,6 +219,7 @@ public class BankApp extends Application {
       GridPane.setHalignment(root2, javafx.geometry.HPos.CENTER);
       root2.setAlignment(Pos.CENTER);
 
+      /** Sets the title for the GUI and commands to display everything */
       primaryStage.setTitle("Bank App"); // Add title for the scene
       GridPane.setHalignment(root1, javafx.geometry.HPos.CENTER);
       root1.setAlignment(Pos.CENTER);

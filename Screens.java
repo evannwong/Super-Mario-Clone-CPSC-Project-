@@ -12,14 +12,26 @@ import javafx.scene.shape.Shape;
 import javafx.scene.image.ImageView;
 import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
+import java.io.*;
+import javafx.scene.text.Text;
+import javafx.scene.text.Font;
 
 
 public class Screens extends Application {
-  int skinSelected = 0;
+  protected int skinSelected = 0;
+  protected int coinCounter = 0;
 
   @Override
   public void start(Stage menu) throws Exception {
     Platform.setImplicitExit(false);
+
+    try{
+      FileReader file = new FileReader("info.txt");
+      BufferedReader reader = new BufferedReader(file);
+      coinCounter = Integer.parseInt(reader.readLine());
+    } catch(IOException ioe){
+      coinCounter = 0;
+    }
 
 // The root that shows the main menu
     Pane rootMenu = new Pane();
@@ -51,6 +63,16 @@ public class Screens extends Application {
     BackgroundImage loadBackground = new BackgroundImage(load, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, new BackgroundSize(BackgroundSize.AUTO, BackgroundSize.AUTO, false, false, true, false));
     Background loBackground = new Background(loadBackground);
     rootLoad.setBackground(loBackground);
+
+    ImageView coins = new ImageView("https://raw.githubusercontent.com/RMcCurdy/TeamProjectGroup14/master/Images/frame1-sky3.png?token=ApkDjG3QpMdkdKtqJ4uwSCDIybeWTQbJks5cjg1RwA%3D%3D");
+    coins.setFitWidth(32);
+    coins.setFitHeight(32);
+    coins.setX(650);
+    coins.setY(20);
+    rootMenu.getChildren().add(coins);
+    Text coinCount = new Text(700, 40, coinCounter + "");
+    coinCount.setFont(Font.font ("Verdana", 20));
+    rootMenu.getChildren().add(coinCount);
 
 
 //Main Menu screen

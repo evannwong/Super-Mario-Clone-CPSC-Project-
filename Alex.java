@@ -16,7 +16,6 @@ public class Alex extends Game{
   protected static Point2D playerVelocity = new Point2D(0, 0); // X and Y momentum
   private boolean canJump = true;
 
-
   /**
   *Checks if any key is pressed, and returns either the key itself if it is true, or false otherwise.
   */
@@ -29,6 +28,7 @@ public class Alex extends Game{
   */
   @Override
   public void update(){
+    coinCount.setText(coinCounter + "");
     if (graphics.player.getTranslateY() > 650){
       die();
     }
@@ -103,7 +103,7 @@ public class Alex extends Game{
               return;
             }
           } else{
-            if (graphics.player.getTranslateX() == platform.getTranslateX() + 28){
+            if (graphics.player.getTranslateX() == platform.getTranslateX() + 32){
               graphics.player.setTranslateX(graphics.player.getTranslateX() + 1);
               return;
             }
@@ -128,14 +128,16 @@ public class Alex extends Game{
       for (Node coin : coins){
         if (graphics.player.getBoundsInParent().intersects(coin.getBoundsInParent())){
           coin.setVisible(false);
+          coin.setTranslateY(900);
+          coinCounter += 1;
         }
       }
       for (Node pole : poles){
-        if (graphics.player.getBoundsInParent().intersects(pole.getBoundsInParent())){
-          //edit to make the game close and re-open java Screens
-          die();
-        }
-      }
+       if (graphics.player.getBoundsInParent().intersects(pole.getBoundsInParent())){
+         //edit to make the game close and re-open java Screens
+         die();
+       }
+     }
       graphics.player.setTranslateX(graphics.player.getTranslateX() + (movingRight ? 1 : -1));
     }
   }
@@ -188,9 +190,10 @@ public class Alex extends Game{
       for (Node coin : coins){
         if (graphics.player.getBoundsInParent().intersects(coin.getBoundsInParent())){
           coin.setVisible(false);
+          coin.setTranslateY(900);
+          coinCounter += 1;
         }
       }
-      //change from platforms to "pole"
       for (Node pole : poles){
         if (graphics.player.getBoundsInParent().intersects(pole.getBoundsInParent())){
           //edit to make the game close and re-open java Screens

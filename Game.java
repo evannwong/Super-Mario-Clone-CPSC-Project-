@@ -11,6 +11,9 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import javafx.scene.image.ImageView;
+import javafx.scene.text.Text;
+import javafx.scene.text.Font;
+import java.io.*;
 
 public abstract class Game{
   Graphics graphics = new Graphics();
@@ -33,15 +36,38 @@ public abstract class Game{
 
   protected int levelWidth = 0;
   protected int levelHeight = 0;
+  protected int coinCounter = 0;
+  protected Text coinCount;
   String line = "";
 
   /**
   *Method for initializing the game window, and the environment.
   */
   public void initContent(int level, int skin){
+    /**
+    * Checks for a save file, and loads in the amount of coins
+    */
+    try{
+      FileReader file = new FileReader("info.txt");
+      BufferedReader reader = new BufferedReader(file);
+      coinCounter = Integer.parseInt(reader.readLine());
+    } catch(IOException ioe){
+      coinCounter = 0;
+    }
+
     appRoot.setPrefSize(800, 640);
     environmentRoot.setPrefSize(800, 640);
     menuRoot.setPrefSize(800, 640);
+
+    ImageView coinLogo = new ImageView("https://raw.githubusercontent.com/RMcCurdy/TeamProjectGroup14/master/Images/frame1-sky3.png?token=ApkDjG3QpMdkdKtqJ4uwSCDIybeWTQbJks5cjg1RwA%3D%3D");
+    coinLogo.setFitWidth(20);
+    coinLogo.setFitHeight(20);
+    coinLogo.setX(700);
+    coinLogo.setY(20);
+    menuRoot.getChildren().add(coinLogo);
+    coinCount = new Text(750, 40, coinCounter + "");
+    coinCount.setFont(Font.font ("Verdana", 20));
+    menuRoot.getChildren().add(coinCount);
 
     if (level == 1){
       levelWidth = Environment.LEVEL1[0].length() * 32;
@@ -129,7 +155,6 @@ public abstract class Game{
           case 'F':
             Node pole = graphics.createFlagPole(o*32, i*32, 32, 256);
             environmentRoot.getChildren().add(pole);
-            //change below to make it its own identity, where you come in contact with the pole and it resets the game
             poles.add(pole);
             break;
           case '6':

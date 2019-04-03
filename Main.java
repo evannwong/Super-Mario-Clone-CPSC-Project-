@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.io.*;
 import javafx.animation.AnimationTimer;
 import javafx.application.*;
 import javafx.geometry.Point2D;
@@ -15,7 +16,7 @@ import javafx.stage.WindowEvent;
 
 public class Main extends Application{
 
-  Game enemy = new Enemy();
+  Game game = new Enemy();
   protected int level = 0;
   protected int skin = 0;
 
@@ -30,15 +31,30 @@ public class Main extends Application{
 
   /** Sets the window for which the game is run. Also keeps track of user input */
   public void start(Stage primaryStage) throws Exception{
-    enemy.initContent(level, skin);
+    try{
+      FileReader file = new FileReader("info.txt");
+      BufferedReader reader = new BufferedReader(file);
+      game.coinCounter = Integer.parseInt(reader.readLine());
+    } catch(IOException ioe){
+      game.coinCounter = 0;
+    }
+    game.initContent(level, skin);
     Platform.setImplicitExit(false);
 
-    Scene scene = new Scene(enemy.appRoot);
-    scene.setOnKeyPressed(event -> enemy.keys.put(event.getCode(), true));
-    scene.setOnKeyReleased(event -> enemy.keys.put(event.getCode(), false));
+    Scene scene = new Scene(game.appRoot);
+    scene.setOnKeyPressed(event -> game.keys.put(event.getCode(), true));
+    scene.setOnKeyReleased(event -> game.keys.put(event.getCode(), false));
     primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
           public void handle(WindowEvent we) {
-              Platform.exit();
+            try{
+              File file = new File("info.txt");
+              PrintWriter writer = new PrintWriter(file);
+              writer.println(game.coinCounter);
+              writer.close();
+            } catch(IOException ioe){
+
+            }
+            Platform.exit();
           }
       });
     primaryStage.setTitle("Super Alejandro");
@@ -49,7 +65,7 @@ public class Main extends Application{
     AnimationTimer timer = new AnimationTimer(){
       @Override
       public void handle(long now){
-        enemy.update();
+        game.update();
       }
     };
     timer.start();

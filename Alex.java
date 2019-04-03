@@ -13,9 +13,8 @@ import javafx.stage.Stage;
 import javafx.scene.image.ImageView;
 
 public class Alex extends Game{
-  private Point2D playerVelocity = new Point2D(0, 0); // X and Y momentum
+  protected static Point2D playerVelocity = new Point2D(0, 0); // X and Y momentum
   private boolean canJump = true;
-
 
   /**
   *Checks if any key is pressed, and returns either the key itself if it is true, or false otherwise.
@@ -29,11 +28,15 @@ public class Alex extends Game{
   */
   @Override
   public void update(){
+    coinCount.setText(coinCounter + "");
+    if (graphics.player.getTranslateY() > 650){
+      die();
+    }
     if (isPressed(KeyCode.W)){
       jumpPlayer();
     }
 
-    if (isPressed(KeyCode.SHIFT) && isPressed(KeyCode.D) && playerVelocity.getX() <= 4 && graphics.player.getTranslateX() + 32 <= levelWidth - 5){
+    if (isPressed(KeyCode.SHIFT) && isPressed(KeyCode.D) && playerVelocity.getX() <= 4 && graphics.player.getTranslateX() + 28 <= levelWidth - 5){
       playerVelocity = playerVelocity.add(0.65, 0);
     }
 
@@ -51,7 +54,7 @@ public class Alex extends Game{
       movePlayerX(-3);
     }
 
-    if (isPressed(KeyCode.D) && graphics.player.getTranslateX() + 32 <= levelWidth - 5){
+    if (isPressed(KeyCode.D) && graphics.player.getTranslateX() + 28 <= levelWidth - 5){
       movePlayerX(3);
     }
 
@@ -68,6 +71,9 @@ public class Alex extends Game{
       playerVelocity = playerVelocity.add(-0.25, 0);
     }
     movePlayerX((int) playerVelocity.getX());
+
+    /** Command to output the updated x-coordinate of the player in pixels */
+    //System.out.println(graphics.player.getTranslateX());
   }
 
   /**
@@ -92,7 +98,7 @@ public class Alex extends Game{
       for (Node platform : platforms){
         if (graphics.player.getBoundsInParent().intersects(platform.getBoundsInParent())){
           if (movingRight){
-            if (graphics.player.getTranslateX() + 32 == platform.getTranslateX()){
+            if (graphics.player.getTranslateX() + 28 == platform.getTranslateX()){
               graphics.player.setTranslateX(graphics.player.getTranslateX() - 1);
               return;
             }
@@ -104,9 +110,26 @@ public class Alex extends Game{
           }
         }
       }
+      for (Node platform2 : platforms){
+        if (graphics.player.getBoundsInParent().intersects(platform2.getBoundsInParent())){
+          if (movingRight){
+            if (graphics.player.getTranslateX() + 28 == platform2.getTranslateX()){
+              graphics.player.setTranslateX(graphics.player.getTranslateX() - 1);
+              return;
+            }
+          } else{
+            if (graphics.player.getTranslateX() == platform2.getTranslateX() + 28){
+              graphics.player.setTranslateX(graphics.player.getTranslateX() + 1);
+              return;
+            }
+          }
+        }
+      }
       for (Node coin : coins){
         if (graphics.player.getBoundsInParent().intersects(coin.getBoundsInParent())){
           coin.setVisible(false);
+          coin.setTranslateY(900);
+          coinCounter += 1;
         }
       }
       graphics.player.setTranslateX(graphics.player.getTranslateX() + (movingRight ? 1 : -1));
@@ -123,7 +146,7 @@ public class Alex extends Game{
       for (Node platform : platforms){
         if (graphics.player.getBoundsInParent().intersects(platform.getBoundsInParent())){
           if (movingDown){
-            if (graphics.player.getTranslateY() + 30 == platform.getTranslateY()){
+            if (graphics.player.getTranslateY() + 60 == platform.getTranslateY()){
               graphics.player.setTranslateY(graphics.player.getTranslateY() - 1);
               canJump = true;
               return;
@@ -139,12 +162,56 @@ public class Alex extends Game{
           canJump = false;
         }
       }
+      for (Node platform2 : platforms){
+        if (graphics.player.getBoundsInParent().intersects(platform2.getBoundsInParent())){
+          if (movingDown){
+            if (graphics.player.getTranslateY() + 60 == platform2.getTranslateY()){
+              graphics.player.setTranslateY(graphics.player.getTranslateY() - 1);
+              canJump = true;
+              return;
+            }
+          } else{
+            if (graphics.player.getTranslateY() == platform2.getTranslateY() + 30){
+              graphics.player.setTranslateY(graphics.player.getTranslateY() + 1);
+              playerVelocity = playerVelocity.add(0, 4);
+              return;
+            }
+          }
+        } else{
+          canJump = false;
+        }
+      }
       for (Node coin : coins){
         if (graphics.player.getBoundsInParent().intersects(coin.getBoundsInParent())){
           coin.setVisible(false);
+          coin.setTranslateY(900);
+          coinCounter += 1;
+        }
+      }
+      for (int numG = 0; numG < goombas.size(); numG++){
+        if (goombas.get(numG).getBoundsInParent().intersects(graphics.player.getBoundsInParent())){
+          if (goombas.get(numG).getTranslateY() - 35 >= graphics.player.getTranslateY()){
+            if (playerVelocity.getY() < -7){
+              playerVelocity = playerVelocity.add(0, 4);
+            } else{
+              playerVelocity = new Point2D(0, 0);
+              playerVelocity = playerVelocity.add(0, -4);
+            }
+          }
+          if (graphics.player.getTranslateX() == goombas.get(numG).getTranslateX() + 28){
+            die();
+          } else if (graphics.player.getTranslateX() + 28 == goombas.get(numG).getTranslateX()){
+            die();
+          }
         }
       }
       graphics.player.setTranslateY(graphics.player.getTranslateY() + (movingDown ? 1 : -1));
     }
+  }
+
+  public void die(){
+    graphics.player.setTranslateX(30);
+    graphics.player.setTranslateY(500);
+    environmentRoot.setLayoutX(0);
   }
 }

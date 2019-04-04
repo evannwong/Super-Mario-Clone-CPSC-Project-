@@ -17,14 +17,14 @@ public class Alex extends Game{
   private boolean canJump = true;
 
   /**
-  *Checks if any key is pressed, and returns either the key itself if it is true, or false otherwise.
+  *  Checks if any key is pressed, and returns either the key itself if it is true, or false otherwise.
   */
   private boolean isPressed(KeyCode key){
     return keys.getOrDefault(key, false);
   }
 
   /**
-  *Function that continuously checks for keypresses, and applies velocities such as X momentum and gravity.
+  *  Function that continuously checks for keypresses, and applies velocities such as X momentum and gravity.
   */
   @Override
   public void update(){
@@ -72,12 +72,15 @@ public class Alex extends Game{
     }
     movePlayerX((int) playerVelocity.getX());
 
-    /** Command to output the updated x-coordinate of the player in pixels */
+    /**
+    *  Command to output the updated x-coordinate of the player in pixels
+    */
+    
     //System.out.println(graphics.player.getTranslateX());
   }
 
   /**
-  *Checks if canJump is true, and if it is, adds upwards momentum and moves the player by that amount.
+  *  Checks if canJump is true, and if it is, adds upwards momentum and moves the player by that amount.
   */
   private void jumpPlayer(){
     if (canJump){
@@ -89,8 +92,8 @@ public class Alex extends Game{
   }
 
   /**
-  *Moves the player by an int in the X axis, and checks for collisions with pixel-precision.
-  *Checks for collisions with coins.
+  *  Moves the player by an int in the X direction, and checks for collisions with pixel-precision.
+  *  Checks for collisions with coins.
   */
   private void movePlayerX(int value){
     boolean movingRight = value > 0;
@@ -143,8 +146,8 @@ public class Alex extends Game{
   }
 
   /**
-  *Moves the player by an int in the Y axis, and checks for collisions with pixel-precision.
-  *Checks for collision with coin.
+  *  Moves the player by an int in the Y direction, and checks for collisions with pixel-precision.
+  *  Checks for collision with coin.
   */
   private void movePlayerY(int value){
     boolean movingDown = value > 0;

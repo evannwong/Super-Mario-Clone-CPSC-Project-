@@ -33,7 +33,9 @@ public class Screens extends Application {
       coinCounter = 0;
     }
 
-// The root that shows the main menu
+/**
+*  The root that shows the main menu
+*/
     Pane rootMenu = new Pane();
     Pane rootLevels = new Pane();
     Pane rootSkin = new Pane();
@@ -43,7 +45,9 @@ public class Screens extends Application {
     Scene skinScreen = new Scene(rootSkin, 750.0, 480.0);
     Scene loadingScreen = new Scene(rootLoad, 750.0, 480.0);
 
-//Backgrounds
+/**
+*  Backgrounds
+*/
     Image mainMenu = new Image("https://raw.githubusercontent.com/RMcCurdy/TeamProjectGroup14/master/Images/background%20main%20menu%20blank.png");
     BackgroundImage mainMenuBackground = new BackgroundImage(mainMenu, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, new BackgroundSize(BackgroundSize.AUTO, BackgroundSize.AUTO, false, false, true, false));
     Background mmBackground = new Background(mainMenuBackground);
@@ -74,8 +78,9 @@ public class Screens extends Application {
     coinCount.setFont(Font.font ("Verdana", 20));
     rootMenu.getChildren().add(coinCount);
 
-
-//Main Menu screen
+/**
+*  Main Menu screen
+*/
     Image levelsImage = new Image("https://raw.githubusercontent.com/RMcCurdy/TeamProjectGroup14/master/Images/levels.png");
     ImageView levelsButton = new ImageView();
     levelsButton.setImage(levelsImage);
@@ -136,10 +141,9 @@ public class Screens extends Application {
       }
     });
 
-
-
-
-//Levels screen
+/**
+*  Levels screen
+*/
     Image imageLvl1 = new Image("https://raw.githubusercontent.com/RMcCurdy/TeamProjectGroup14/master/Images/button-1.png");
     Image imageLvl2 = new Image("https://raw.githubusercontent.com/RMcCurdy/TeamProjectGroup14/master/Images/button-2.png");
     Image imageLvl3 = new Image("https://raw.githubusercontent.com/RMcCurdy/TeamProjectGroup14/master/Images/button-3.png");
@@ -173,6 +177,7 @@ public class Screens extends Application {
         } catch(Exception e){}
       }
     });
+    
     ImageView lvl3 = new ImageView();
     lvl3.setImage(imageLvl3);
 
@@ -186,6 +191,7 @@ public class Screens extends Application {
         } catch(Exception e){}
       }
     });
+    
     ImageView lvl4 = new ImageView();
     lvl4.setImage(imageLvl4);
 
@@ -199,6 +205,7 @@ public class Screens extends Application {
         } catch(Exception e){}
       }
     });
+    
     ImageView lvl5 = new ImageView();
     lvl5.setImage(imageLvl5);
 
@@ -256,6 +263,9 @@ public class Screens extends Application {
 
     rootLevels.getChildren().add(bButton);
 
+/**
+*  EventHandlers for hovering over levels
+*/
     lvl1.setOnMouseEntered(new EventHandler<MouseEvent>() {
       public void handle(MouseEvent me) {
         lvl2.setOpacity(0.5);
@@ -370,12 +380,9 @@ public class Screens extends Application {
       }
     });
 
-
-
-
-
-
-//Skin screen
+/**
+*  Skin screen
+*/
     Image border = new Image("https://raw.githubusercontent.com/RMcCurdy/TeamProjectGroup14/master/Images/borderSelection.png");
     ImageView borderS = new ImageView();
     borderS.setFitWidth(100.0);
@@ -408,10 +415,12 @@ public class Screens extends Application {
             borderS.setY(200);
             borderS.setX(102);
             borderS.setImage(border);
+            System.out.println("Classic Alex selected");
           }
         } catch(Exception e){}
       }
     });
+    
     Image imageSkin2 = new Image("https://raw.githubusercontent.com/RMcCurdy/TeamProjectGroup14/master/Images/alejandro-2.png");
     ImageView skin2 = new ImageView();
     skin2.setImage(imageSkin2);
@@ -424,6 +433,7 @@ public class Screens extends Application {
             borderS.setY(200);
             borderS.setX(218);
             borderS.setImage(border);
+            System.out.println("Pink Alex selected");
           }
         } catch(Exception e){}
       }
@@ -441,6 +451,7 @@ public class Screens extends Application {
             borderS.setY(200);
             borderS.setX(334);
             borderS.setImage(border);
+            System.out.println("Gay Pride Alex selected");
           }
         } catch(Exception e){}
       }
@@ -458,6 +469,7 @@ public class Screens extends Application {
             borderS.setY(200);
             borderS.setX(450);
             borderS.setImage(border);
+            System.out.println("Where's Walex selected");
           }
         } catch(Exception e){}
       }
@@ -475,6 +487,7 @@ public class Screens extends Application {
             borderS.setY(200);
             borderS.setX(566);
             borderS.setImage(border);
+            System.out.println("Plumber Alex selected");
           }
         } catch(Exception e){}
       }
@@ -518,12 +531,5 @@ public class Screens extends Application {
     menu.setTitle("Super Alejandro");
     menu.setScene(menuScreen);
     menu.show();
-// The root that shows the level selection
-//    Pane rootLevels = new Pane();
-
-//    Image levels = new Image("url");
-//    BackgroundImage levelsBackground = new BackgroundImage(levels, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.AUTO);
-//    rootLevels.setBackground(levelsBackground);
-//  }
   }
 }

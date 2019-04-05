@@ -159,6 +159,7 @@ public class Screens extends Application {
           Stage primaryStage = new Stage();
           Main main = new Main(1, skinSelected);
           System.out.println("\n     Playing level 1\n");
+          System.out.println("Use the WASD keys for movement\nHold SHIFT to run faster\n");
           main.start(primaryStage);
           menu.close();
         } catch(Exception e){}
@@ -174,6 +175,7 @@ public class Screens extends Application {
           Stage primaryStage = new Stage();
           Main main = new Main(2, skinSelected);
           System.out.println("\n     Playing level 2\n");
+          System.out.println("Use the WASD keys for movement\nHold SHIFT to run faster\n");
           main.start(primaryStage);
           menu.close();
         } catch(Exception e){}
@@ -189,6 +191,7 @@ public class Screens extends Application {
           Stage primaryStage = new Stage();
           Main main = new Main(3, skinSelected);
           System.out.println("\n     Playing level 3\n");
+          System.out.println("Use the WASD keys for movement\nHold SHIFT to run faster\n");
           main.start(primaryStage);
           menu.close();
         } catch(Exception e){}
@@ -204,6 +207,7 @@ public class Screens extends Application {
           Stage primaryStage = new Stage();
           Main main = new Main(4, skinSelected);
           System.out.println("\n     Playing level 4\n");
+          System.out.println("Use the WASD keys for movement\nHold SHIFT to run faster\n");
           main.start(primaryStage);
           menu.close();
         } catch(Exception e){}
@@ -219,6 +223,7 @@ public class Screens extends Application {
           Stage primaryStage = new Stage();
           Main main = new Main(5, skinSelected);
           System.out.println("\n     Playing level 5\n");
+          System.out.println("Use the WASD keys for movement\nHold SHIFT to run faster\n");
           main.start(primaryStage);
           menu.close();
         } catch(Exception e){}

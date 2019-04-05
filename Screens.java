@@ -158,6 +158,7 @@ public class Screens extends Application {
         try{
           Stage primaryStage = new Stage();
           Main main = new Main(1, skinSelected);
+          System.out.println("\n     Playing level 1\n");
           main.start(primaryStage);
           menu.close();
         } catch(Exception e){}
@@ -172,6 +173,7 @@ public class Screens extends Application {
         try{
           Stage primaryStage = new Stage();
           Main main = new Main(2, skinSelected);
+          System.out.println("\n     Playing level 2\n");
           main.start(primaryStage);
           menu.close();
         } catch(Exception e){}
@@ -186,6 +188,7 @@ public class Screens extends Application {
         try{
           Stage primaryStage = new Stage();
           Main main = new Main(3, skinSelected);
+          System.out.println("\n     Playing level 3\n");
           main.start(primaryStage);
           menu.close();
         } catch(Exception e){}
@@ -200,6 +203,7 @@ public class Screens extends Application {
         try{
           Stage primaryStage = new Stage();
           Main main = new Main(4, skinSelected);
+          System.out.println("\n     Playing level 4\n");
           main.start(primaryStage);
           menu.close();
         } catch(Exception e){}
@@ -214,6 +218,7 @@ public class Screens extends Application {
         try{
           Stage primaryStage = new Stage();
           Main main = new Main(5, skinSelected);
+          System.out.println("\n     Playing level 5\n");
           main.start(primaryStage);
           menu.close();
         } catch(Exception e){}

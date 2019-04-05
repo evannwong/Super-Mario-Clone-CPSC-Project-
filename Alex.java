@@ -71,12 +71,6 @@ public class Alex extends Game{
       playerVelocity = playerVelocity.add(-0.25, 0);
     }
     movePlayerX((int) playerVelocity.getX());
-
-    /**
-    *  Command to output the updated x-coordinate of the player in pixels
-    */
-    
-    //System.out.println(graphics.player.getTranslateX());
   }
 
   /**
@@ -139,6 +133,7 @@ public class Alex extends Game{
       for (Node pole : poles){
        if (graphics.player.getBoundsInParent().intersects(pole.getBoundsInParent())){
          //edit to make the game close and re-open java Screens
+         System.out.println("You completed the level!");
          die();
        }
      }
@@ -202,6 +197,7 @@ public class Alex extends Game{
       for (Node pole : poles){
         if (graphics.player.getBoundsInParent().intersects(pole.getBoundsInParent())){
           //edit to make the game close and re-open java Screens
+          System.out.println("You completed the level!");
           die();
         }
       }
@@ -217,8 +213,10 @@ public class Alex extends Game{
           }
           if (graphics.player.getTranslateX() == goombas.get(numG).getTranslateX() + 28){
             die();
+            System.out.println("oof");
           } else if (graphics.player.getTranslateX() + 28 == goombas.get(numG).getTranslateX()){
             die();
+            System.out.println("oof");
           }
         }
       }

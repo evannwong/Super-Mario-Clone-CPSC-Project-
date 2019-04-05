@@ -133,6 +133,7 @@ public class Alex extends Game{
           coin.setVisible(false);
           coin.setTranslateY(900);
           coinCounter += 1;
+          System.out.println("Coins collected: " + coinCounter);
         }
       }
       for (Node pole : poles){

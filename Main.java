@@ -29,7 +29,9 @@ public class Main extends Application{
     skin = aSkin;
   }
 
-  /** Sets the window for which the game is run. Also keeps track of user input */
+  /**
+  *  Sets the window for which the game is run. Also keeps track of user input
+  */
   public void start(Stage primaryStage) throws Exception{
     try{
       FileReader file = new FileReader("info.txt");
@@ -61,7 +63,9 @@ public class Main extends Application{
     primaryStage.setScene(scene);
     primaryStage.show();
 
-    /** A timer that keeps the game updated */
+    /**
+    *  A timer that keeps the game updated
+    */
     AnimationTimer timer = new AnimationTimer(){
       @Override
       public void handle(long now){
@@ -71,7 +75,9 @@ public class Main extends Application{
     timer.start();
   }
 
-  /** Command used to run the game */
+  /**
+  *  Command used to run the game
+  */
   public static void main(String[] args){
     launch(args);
   }

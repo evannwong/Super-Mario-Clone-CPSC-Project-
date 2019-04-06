@@ -133,8 +133,15 @@ public class Alex extends Game{
       for (Node pole : poles){
        if (graphics.player.getBoundsInParent().intersects(pole.getBoundsInParent())){
          //edit to make the game close and re-open java Screens
+         System.out.println("");
          System.out.println("You completed the level!");
-         die();
+         System.out.println("Please wait 5 seconds for the game to re-load.");
+         try {
+          //save the amount of coins from the level to txt file
+          Runtime.getRuntime().exec("java Screens");
+          Thread.sleep(5000);
+          System.exit(0);
+        } catch (Exception e) {}
        }
      }
       graphics.player.setTranslateX(graphics.player.getTranslateX() + (movingRight ? 1 : -1));
@@ -197,8 +204,15 @@ public class Alex extends Game{
       for (Node pole : poles){
         if (graphics.player.getBoundsInParent().intersects(pole.getBoundsInParent())){
           //edit to make the game close and re-open java Screens
+          System.out.println("");
           System.out.println("You completed the level!");
-          die();
+          System.out.println("Please wait 5 seconds for the game to re-load.");
+          try {
+            //save the amount of coins from the level to txt file
+            Runtime.getRuntime().exec("java Screens");
+            Thread.sleep(5000); 
+            System.exit(0);
+          } catch (Exception e) {}
         }
       }
       for (int numG = 0; numG < goombas.size(); numG++){

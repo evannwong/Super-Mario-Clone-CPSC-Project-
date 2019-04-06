@@ -58,6 +58,16 @@ public class Graphics{
     return coin;
   }
 
+  /** Node created to pull in the image to use for the coin. The dimensions and coordinates for the image are set inside of this method */
+  public Node createSpecialCoin(int x, int y, int w, int h){
+    ImageView Scoin = new ImageView("https://raw.githubusercontent.com/RMcCurdy/TeamProjectGroup14/master/Images/specialCoin.png?token=ApkDjG3QpMdkdKtqJ4uwSCDIybeWTQbJks5cjg1RwA%3D%3D");
+    Scoin.setX(x);
+    Scoin.setY(y);
+    Scoin.setFitWidth(w);
+    Scoin.setFitHeight(h);
+    return Scoin;
+  }
+
   /** Node created to pull in the image to use for the ground. The dimensions and coordinates for the image are set inside of this method */
   public Node createGround(int x, int y, int w, int h){
     ImageView ground = new ImageView("https://raw.githubusercontent.com/RMcCurdy/TeamProjectGroup14/master/Images/ground64by64.png?token=ApkDjG3QpMdkdKtqJ4uwSCDIybeWTQbJks5cjg1RwA%3D%3D");
@@ -96,6 +106,16 @@ public class Graphics{
     back.setFitWidth(w);
     back.setFitHeight(h);
     return back;
+  }
+
+  /** Node created to pull in the image to use for the enemy. The dimensions and coordinates for the image are set inside of this method */
+  public ImageView createBowser(int x, int y){
+    ImageView bowser = new ImageView("https://raw.githubusercontent.com/RMcCurdy/TeamProjectGroup14/master/Images/bowser.png");
+    bowser.setTranslateX(x);
+    bowser.setTranslateY(y);
+    bowser.setFitWidth(28);
+    bowser.setFitHeight(30);
+    return bowser;
   }
 
   /** Node created to pull in the image to use for the background. The dimensions and coordinates for the image are set inside of this method */

@@ -128,8 +128,13 @@ public abstract class Game{
             environmentRoot.getChildren().add(coin);
             coins.add(coin);
             break;
+          case 'S':
+            Node Scoin = graphics.createSpecialCoin(o*32, i*32, 32, 32);
+            environmentRoot.getChildren().add(Scoin);
+            coins.add(Scoin);
+            break;
           case '3':
-            Node back = graphics.createBack(0, 0, 3200, 640);
+            Node back = graphics.createBack(o*32, i*32, 3200, 640);
             environmentRoot.getChildren().add(back);
             break;
           case 'B':
@@ -173,6 +178,13 @@ public abstract class Game{
             Node goomba = graphics.createEnemy(o*32, i*32);
             environmentRoot.getChildren().add(goomba);
             goombas.add(goomba);
+            goombaTrue.add(goombaLeft);
+            goombaGravity.add(goombaVelocity);
+            break;
+          case 'E':
+            Node bowser = graphics.createBowser(o*32, i*32);
+            environmentRoot.getChildren().add(bowser);
+            goombas.add(bowser);
             goombaTrue.add(goombaLeft);
             goombaGravity.add(goombaVelocity);
             break;

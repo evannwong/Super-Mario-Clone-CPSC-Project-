@@ -133,13 +133,12 @@ public class Alex extends Game{
       for (Node pole : poles){
        if (graphics.player.getBoundsInParent().intersects(pole.getBoundsInParent())){
          //edit to make the game close and re-open java Screens
-         System.out.println("");
-         System.out.println("You completed the level!");
+         System.out.println("\nYou completed the level!");
          System.out.println("Please wait 5 seconds for the game to re-load.");
          try {
           //save the amount of coins from the level to txt file
           Runtime.getRuntime().exec("java Screens");
-          Thread.sleep(5000);
+          Thread.sleep(5000); 
           System.exit(0);
         } catch (Exception e) {}
        }
@@ -204,8 +203,7 @@ public class Alex extends Game{
       for (Node pole : poles){
         if (graphics.player.getBoundsInParent().intersects(pole.getBoundsInParent())){
           //edit to make the game close and re-open java Screens
-          System.out.println("");
-          System.out.println("You completed the level!");
+          System.out.println("\nYou completed the level!");
           System.out.println("Please wait 5 seconds for the game to re-load.");
           try {
             //save the amount of coins from the level to txt file
@@ -227,10 +225,10 @@ public class Alex extends Game{
           }
           if (graphics.player.getTranslateX() == goombas.get(numG).getTranslateX() + 28){
             die();
-            System.out.println("oof");
+            System.out.println("\nOOF, looks like you're not good enough'...\n");
           } else if (graphics.player.getTranslateX() + 28 == goombas.get(numG).getTranslateX()){
             die();
-            System.out.println("oof");
+            System.out.println("\nOOF, looks like you're not good enough...\n");
           }
         }
       }

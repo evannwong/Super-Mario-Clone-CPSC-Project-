@@ -138,7 +138,7 @@ public abstract class Game{
             environmentRoot.getChildren().add(back);
             break;
           case 'B':
-            Node Fback = graphics.createFinalBack(0, 0, 3200, 640);
+            Node Fback = graphics.createFinalBack(o*32, i*32, 3200, 640);
             environmentRoot.getChildren().add(Fback);
             break;
           case '4':

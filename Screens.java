@@ -115,28 +115,28 @@ public class Screens extends Application {
 
     levelsButton.setOnMouseEntered(new EventHandler<MouseEvent>() {
       public void handle(MouseEvent me) {
-        levelsButton.setOpacity(0.5);
+        skinButton.setOpacity(0.5);
         menu.show();
       }
     });
 
     levelsButton.setOnMouseExited(new EventHandler<MouseEvent>() {
       public void handle(MouseEvent me) {
-        levelsButton.setOpacity(1.0);
+        skinButton.setOpacity(1.0);
         menu.show();
       }
     });
 
     skinButton.setOnMouseEntered(new EventHandler<MouseEvent>() {
       public void handle(MouseEvent me) {
-        skinButton.setOpacity(0.5);
+        levelsButton.setOpacity(0.5);
         menu.show();
       }
     });
 
     skinButton.setOnMouseExited(new EventHandler<MouseEvent>() {
       public void handle(MouseEvent me) {
-        skinButton.setOpacity(1.0);
+        levelsButton.setOpacity(1.0);
         menu.show();
       }
     });
@@ -373,14 +373,22 @@ public class Screens extends Application {
 
     bButton.setOnMouseEntered(new EventHandler<MouseEvent>() {
       public void handle(MouseEvent me) {
-        bButton.setOpacity(0.5);
+        lvl1.setOpacity(0.5);
+        lvl2.setOpacity(0.5);
+        lvl3.setOpacity(0.5);
+        lvl4.setOpacity(0.5);
+        lvl5.setOpacity(0.5);
         menu.show();
       }
     });
 
     bButton.setOnMouseExited(new EventHandler<MouseEvent>() {
       public void handle(MouseEvent me) {
-        bButton.setOpacity(1.0);
+        lvl1.setOpacity(1.0);
+        lvl2.setOpacity(1.0);
+        lvl3.setOpacity(1.0);
+        lvl4.setOpacity(1.0);
+        lvl5.setOpacity(1.0);
         menu.show();
       }
     });

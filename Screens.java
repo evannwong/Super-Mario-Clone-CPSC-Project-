@@ -158,8 +158,7 @@ public class Screens extends Application {
         try{
           Stage primaryStage = new Stage();
           Main main = new Main(1, skinSelected);
-          System.out.println("\n     Playing level 1\n");
-          System.out.println("Use the WASD keys for movement\nHold SHIFT to run faster\n");
+          System.out.println("\nPlaying Level 1\nUse the WASD keys for movement\nHold SHIFT to run faster\n");
           main.start(primaryStage);
           menu.close();
         } catch(Exception e){}
@@ -174,8 +173,7 @@ public class Screens extends Application {
         try{
           Stage primaryStage = new Stage();
           Main main = new Main(2, skinSelected);
-          System.out.println("\n     Playing level 2\n");
-          System.out.println("Use the WASD keys for movement\nHold SHIFT to run faster\n");
+          System.out.println("\nPlaying Level 2\nUse the WASD keys for movement\nHold SHIFT to run faster\n");
           main.start(primaryStage);
           menu.close();
         } catch(Exception e){}
@@ -190,8 +188,7 @@ public class Screens extends Application {
         try{
           Stage primaryStage = new Stage();
           Main main = new Main(3, skinSelected);
-          System.out.println("\n     Playing level 3\n");
-          System.out.println("Use the WASD keys for movement\nHold SHIFT to run faster\n");
+          System.out.println("\nPlaying Level 3\nUse the WASD keys for movement\nHold SHIFT to run faster\n");
           main.start(primaryStage);
           menu.close();
         } catch(Exception e){}
@@ -206,8 +203,7 @@ public class Screens extends Application {
         try{
           Stage primaryStage = new Stage();
           Main main = new Main(4, skinSelected);
-          System.out.println("\n     Playing level 4\n");
-          System.out.println("Use the WASD keys for movement\nHold SHIFT to run faster\n");
+          System.out.println("\nPlaying Level 4\nUse the WASD keys for movement\nHold SHIFT to run faster\n");
           main.start(primaryStage);
           menu.close();
         } catch(Exception e){}
@@ -222,8 +218,7 @@ public class Screens extends Application {
         try{
           Stage primaryStage = new Stage();
           Main main = new Main(5, skinSelected);
-          System.out.println("\n     Playing level 5\n");
-          System.out.println("Use the WASD keys for movement\nHold SHIFT to run faster\n");
+          System.out.println("\nPlaying Level 5\nUse the WASD keys for movement\nHold SHIFT to run faster\n");
           main.start(primaryStage);
           menu.close();
         } catch(Exception e){}
@@ -425,7 +420,7 @@ public class Screens extends Application {
             borderS.setY(200);
             borderS.setX(102);
             borderS.setImage(border);
-            System.out.println("Classic Alex selected");
+            System.out.println("\nClassic Alex selected");
           }
         } catch(Exception e){}
       }
@@ -443,7 +438,7 @@ public class Screens extends Application {
             borderS.setY(200);
             borderS.setX(218);
             borderS.setImage(border);
-            System.out.println("Pink Alex selected");
+            System.out.println("\nPink Alex selected");
           }
         } catch(Exception e){}
       }
@@ -461,7 +456,7 @@ public class Screens extends Application {
             borderS.setY(200);
             borderS.setX(334);
             borderS.setImage(border);
-            System.out.println("Gay Pride Alex selected");
+            System.out.println("\nGay Pride Alex selected");
           }
         } catch(Exception e){}
       }
@@ -479,7 +474,7 @@ public class Screens extends Application {
             borderS.setY(200);
             borderS.setX(450);
             borderS.setImage(border);
-            System.out.println("Where's Walex selected");
+            System.out.println("\nWhere's Walex selected");
           }
         } catch(Exception e){}
       }
@@ -497,7 +492,7 @@ public class Screens extends Application {
             borderS.setY(200);
             borderS.setX(566);
             borderS.setImage(border);
-            System.out.println("Plumber Alex selected");
+            System.out.println("\nPlumber Alex selected");
           }
         } catch(Exception e){}
       }

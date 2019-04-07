@@ -8,7 +8,6 @@ public class Graphics{
   /** An ImageView is created in order to pull in the specific image to use for the character. The width, height, x coord, and y coord is set inside of Game.java */
   ImageView player = new ImageView("https://raw.githubusercontent.com/RMcCurdy/TeamProjectGroup14/master/Images/alejandro-1.png?token=ApkDjG3QpMdkdKtqJ4uwSCDIybeWTQbJks5cjg1RwA%3D%3D");
 
-
   /** Node created to pull in the image to use for the enemy. The dimensions and coordinates for the image are set inside of this method */
   public ImageView createEnemy(int x, int y){
     ImageView entity = new ImageView("https://raw.githubusercontent.com/RMcCurdy/TeamProjectGroup14/master/Images/goombaFIX.png");

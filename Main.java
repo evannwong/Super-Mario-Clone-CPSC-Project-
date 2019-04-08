@@ -75,10 +75,4 @@ public class Main extends Application{
     timer.start();
   }
 
-  /**
-  *  Command used to run the game
-  */
-  public static void main(String[] args){
-    launch(args);
-  }
 }

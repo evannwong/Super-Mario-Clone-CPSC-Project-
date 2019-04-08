@@ -11,6 +11,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import javafx.scene.image.ImageView;
+import java.io.*;
 
 public class Alex extends Game{
   protected static Point2D playerVelocity = new Point2D(0, 0); // X and Y momentum
@@ -51,11 +52,34 @@ public class Alex extends Game{
     }
 
     if (isPressed(KeyCode.A) && graphics.player.getTranslateX() >= 5){
+      // add something to change character image to look left
+      graphics.player = new ImageView("https://raw.githubusercontent.com/RMcCurdy/TeamProjectGroup14/master/Images/alejandroTest.png");
+      graphics.player.setTranslateX(graphics.player.getTranslateX());
+      graphics.player.setTranslateY(graphics.player.getTranslateY());
+      graphics.player.setFitWidth(28);
+      graphics.player.setFitHeight(60);
+      environmentRoot.getChildren().add(graphics.player);
       movePlayerX(-3);
     }
 
     if (isPressed(KeyCode.D) && graphics.player.getTranslateX() + 28 <= levelWidth - 5){
+      // add something to change character image to look right
+      graphics.player = new ImageView("https://raw.githubusercontent.com/RMcCurdy/TeamProjectGroup14/master/Images/alejandroTest.png");
+      graphics.player.setTranslateX(graphics.player.getTranslateX());
+      graphics.player.setTranslateY(graphics.player.getTranslateY());
+      graphics.player.setFitWidth(28);
+      graphics.player.setFitHeight(60);
+      environmentRoot.getChildren().add(graphics.player);
       movePlayerX(3);
+    }
+
+    if (!isPressed(KeyCode.A) && !isPressed(KeyCode.D)){
+      graphics.player = new ImageView("https://raw.githubusercontent.com/RMcCurdy/TeamProjectGroup14/master/Images/alejandro-1.png?token=ApkDjG3QpMdkdKtqJ4uwSCDIybeWTQbJks5cjg1RwA%3D%3D");
+      graphics.player.setTranslateX(graphics.player.getTranslateX());
+      graphics.player.setTranslateY(graphics.player.getTranslateY());
+      graphics.player.setFitWidth(28);
+      graphics.player.setFitHeight(60);
+      environmentRoot.getChildren().add(graphics.player);
     }
 
     if (playerVelocity.getY() < 10){
@@ -127,14 +151,19 @@ public class Alex extends Game{
           coin.setVisible(false);
           coin.setTranslateY(900);
           coinCounter += 1;
-          System.out.println("Coins collected: " + coinCounter);
+          System.out.println("\nCoins collected: " + coinCounter);
         }
       }
       for (Node pole : poles){
        if (graphics.player.getBoundsInParent().intersects(pole.getBoundsInParent())){
          //edit to make the game close and re-open java Screens
-         System.out.println("\nYou completed the level!");
-         System.out.println("Please wait 5 seconds for the game to re-load.");
+         System.out.println("\nYou completed the level!\nPlease wait 5 seconds for the game to re-load.");
+         try{
+          File file = new File("info.txt");
+          PrintWriter writer = new PrintWriter(file);
+          writer.println(coinCounter);
+          writer.close();
+        } catch(IOException ioe){}
          try {
           //save the amount of coins from the level to txt file
           Runtime.getRuntime().exec("java Screens");
@@ -197,14 +226,19 @@ public class Alex extends Game{
           coin.setVisible(false);
           coin.setTranslateY(900);
           coinCounter += 1;
-          System.out.println("Coins collected: " + coinCounter);
+          System.out.println("\nCoins collected: " + coinCounter);
         }
       }
       for (Node pole : poles){
         if (graphics.player.getBoundsInParent().intersects(pole.getBoundsInParent())){
           //edit to make the game close and re-open java Screens
-          System.out.println("\nYou completed the level!");
-          System.out.println("Please wait 5 seconds for the game to re-load.");
+          System.out.println("\nYou completed the level!\nPlease wait 5 seconds for the game to re-load.");
+          try{
+            File file = new File("info.txt");
+            PrintWriter writer = new PrintWriter(file);
+            writer.println(coinCounter);
+            writer.close();
+          } catch(IOException ioe){}
           try {
             //save the amount of coins from the level to txt file
             Runtime.getRuntime().exec("java Screens");
@@ -225,10 +259,10 @@ public class Alex extends Game{
           }
           if (graphics.player.getTranslateX() == goombas.get(numG).getTranslateX() + 28){
             die();
-            System.out.println("\nOOF, looks like you're not good enough'...\n");
+            System.out.println("\nOOF, looks like you're not good enough...");
           } else if (graphics.player.getTranslateX() + 28 == goombas.get(numG).getTranslateX()){
             die();
-            System.out.println("\nOOF, looks like you're not good enough...\n");
+            System.out.println("\nOOF, looks like you're not good enough...");
           }
         }
       }

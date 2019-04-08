@@ -27,7 +27,7 @@ public class Enemy extends Alex{
         if (goombas.get(numG).getTranslateY() - 35 >= graphics.player.getTranslateY()){
           goombas.get(numG).setVisible(false);
           goombas.get(numG).setTranslateY(goombas.get(numG).getTranslateY() + 100);
-          System.out.println("\nYou defeated a goomba!\n");
+          System.out.println("\nYou defeated a goomba!");
         }
       }
       if (goombas.get(numG).getTranslateX() >= 1 && goombaTrue.get(numG) == true){

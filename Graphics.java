@@ -5,10 +5,16 @@ import javafx.scene.image.ImageView;
 
 
 public class Graphics{
-  /** An ImageView is created in order to pull in the specific image to use for the character. The width, height, x coord, and y coord is set inside of Game.java */
+  /**
+  *  An ImageView is created in order to pull in the specific image to use for the character.
+  *  The width, height, x coord, and y coord are set inside of Game.java.
+  */
   ImageView player = new ImageView("https://raw.githubusercontent.com/RMcCurdy/TeamProjectGroup14/master/Images/alejandro-1.png?token=ApkDjG3QpMdkdKtqJ4uwSCDIybeWTQbJks5cjg1RwA%3D%3D");
 
-  /** Node created to pull in the image to use for the enemy. The dimensions and coordinates for the image are set inside of this method */
+  /**
+  *  Node created to pull in the image to use for the enemy.
+  *  The dimensions and coordinates for the image are set inside of this method.
+  */
   public ImageView createEnemy(int x, int y){
     ImageView entity = new ImageView("https://raw.githubusercontent.com/RMcCurdy/TeamProjectGroup14/master/Images/goombaFIX.png");
     entity.setTranslateX(x);
@@ -18,7 +24,9 @@ public class Graphics{
     return entity;
   }
 
-  /** Node created to set hit boxes and boundaries for the level*/
+  /**
+  *  Node created to set hit boxes and boundaries for the level.
+  */
   public Node createEntity(int x, int y, int w, int h, Color color){
     Rectangle entity = new Rectangle(w, h);
     entity.setTranslateX(x);
@@ -27,7 +35,10 @@ public class Graphics{
     return entity;
   }
 
-  /** Node created to pull in the image to use for the brick. The dimensions and coordinates for the image are set inside of this method */
+  /**
+  *  Node created to pull in the image to use for the brick.
+  *  The dimensions and coordinates for the image are set inside of this method.
+  */
   public Node createBrick(int x, int y, int w, int h){
     ImageView entity = new ImageView("https://raw.githubusercontent.com/RMcCurdy/TeamProjectGroup14/master/Images/brick.png?token=ApkDjG3QpMdkdKtqJ4uwSCDIybeWTQbJks5cjg1RwA%3D%3D");
     entity.setX(x);
@@ -37,7 +48,10 @@ public class Graphics{
     return entity;
   }
 
-  /** Node created to pull in the image to use for the brick. The dimensions and coordinates for the image are set inside of this method */
+  /**
+  *  Node created to pull in the image to use for the brick.
+  *  The dimensions and coordinates for the image are set inside of this method.
+  */
   public Node createFinalBrick(int x, int y, int w, int h){
     ImageView Fentity = new ImageView("https://raw.githubusercontent.com/RMcCurdy/TeamProjectGroup14/master/Images/bowserPlatform.png?token=ApkDjG3QpMdkdKtqJ4uwSCDIybeWTQbJks5cjg1RwA%3D%3D");
     Fentity.setX(x);
@@ -57,7 +71,10 @@ public class Graphics{
     return coin;
   }
 
-  /** Node created to pull in the image to use for the coin. The dimensions and coordinates for the image are set inside of this method */
+  /**
+  *  Node created to pull in the image to use for the coin.
+  *  The dimensions and coordinates for the image are set inside of this method.
+  */
   public Node createSpecialCoin(int x, int y, int w, int h){
     ImageView Scoin = new ImageView("https://raw.githubusercontent.com/RMcCurdy/TeamProjectGroup14/master/Images/specialCoin.png?token=ApkDjG3QpMdkdKtqJ4uwSCDIybeWTQbJks5cjg1RwA%3D%3D");
     Scoin.setX(x);
@@ -67,7 +84,10 @@ public class Graphics{
     return Scoin;
   }
 
-  /** Node created to pull in the image to use for the ground. The dimensions and coordinates for the image are set inside of this method */
+  /**
+  *  Node created to pull in the image to use for the ground.
+  *  The dimensions and coordinates for the image are set inside of this method.
+  */
   public Node createGround(int x, int y, int w, int h){
     ImageView ground = new ImageView("https://raw.githubusercontent.com/RMcCurdy/TeamProjectGroup14/master/Images/ground64by64.png?token=ApkDjG3QpMdkdKtqJ4uwSCDIybeWTQbJks5cjg1RwA%3D%3D");
     ground.setX(x);
@@ -77,7 +97,10 @@ public class Graphics{
     return ground;
   }
 
-  /** Node created to pull in the image to use for the ground. The dimensions and coordinates for the image are set inside of this method */
+  /**
+  *  Node created to pull in the image to use for the ground.
+  *  The dimensions and coordinates for the image are set inside of this method.
+  */
   public Node createFinalGround(int x, int y, int w, int h){
     ImageView Fground = new ImageView("https://raw.githubusercontent.com/RMcCurdy/TeamProjectGroup14/master/Images/bowserBrick.png?token=ApkDjG3QpMdkdKtqJ4uwSCDIybeWTQbJks5cjg1RwA%3D%3D");
     Fground.setX(x);
@@ -87,7 +110,10 @@ public class Graphics{
     return Fground;
   }
 
-  /** Node created to pull in the image to use for the cloud. The dimensions and coordinates for the image are set inside of this method */
+  /**
+  *  Node created to pull in the image to use for the cloud.
+  *  The dimensions and coordinates for the image are set inside of this method.
+  */
   public Node createCloud(int x, int y, int w, int h){
     ImageView cloud = new ImageView("https://raw.githubusercontent.com/RMcCurdy/TeamProjectGroup14/master/Images/cloud32by64.png?token=ApkDjG3QpMdkdKtqJ4uwSCDIybeWTQbJks5cjg1RwA%3D%3D");
     cloud.setX(x);
@@ -97,7 +123,10 @@ public class Graphics{
     return cloud;
   }
 
-  /** Node created to pull in the image to use for the background. The dimensions and coordinates for the image are set inside of this method */
+  /**
+  *  Node created to pull in the image to use for the background.
+  *  The dimensions and coordinates for the image are set inside of this method.
+  */
   public Node createBack(int x, int y, int w, int h){
     ImageView back = new ImageView("https://raw.githubusercontent.com/RMcCurdy/TeamProjectGroup14/master/Images/background-sky3.png?token=ApkDjG3QpMdkdKtqJ4uwSCDIybeWTQbJks5cjg1RwA%3D%3D");
     back.setX(x);
@@ -107,7 +136,10 @@ public class Graphics{
     return back;
   }
 
-  /** Node created to pull in the image to use for the enemy. The dimensions and coordinates for the image are set inside of this method */
+  /**
+  *  Node created to pull in the image to use for the enemy.
+  *  The dimensions and coordinates for the image are set inside of this method.
+  */
   public ImageView createBowser(int x, int y){
     ImageView bowser = new ImageView("https://raw.githubusercontent.com/RMcCurdy/TeamProjectGroup14/master/Images/bowser.png");
     bowser.setTranslateX(x);
@@ -117,7 +149,10 @@ public class Graphics{
     return bowser;
   }
 
-  /** Node created to pull in the image to use for the background. The dimensions and coordinates for the image are set inside of this method */
+  /**
+  *  Node created to pull in the image to use for the background.
+  *  The dimensions and coordinates for the image are set inside of this method.
+  */
   public Node createFinalBack(int x, int y, int w, int h){
     ImageView Fback = new ImageView("https://raw.githubusercontent.com/RMcCurdy/TeamProjectGroup14/master/Images/wallUpdated.png?token=ApkDjG3QpMdkdKtqJ4uwSCDIybeWTQbJks5cjg1RwA%3D%3D");
     Fback.setX(x);
@@ -127,7 +162,10 @@ public class Graphics{
     return Fback;
   }
 
-  /** Node created to pull in the image to use for the middle of the pipe. The dimensions and coordinates for the image are set inside of this method */
+  /**
+  *  Node created to pull in the image to use for the middle of the pipe.
+  *  The dimensions and coordinates for the image are set inside of this method.
+  */
   public Node createPipeMain(int x, int y, int w, int h){
     ImageView pipeM = new ImageView("https://raw.githubusercontent.com/RMcCurdy/TeamProjectGroup14/master/Images/pipemain.png?token=ApkDjG3QpMdkdKtqJ4uwSCDIybeWTQbJks5cjg1RwA%3D%3D");
     pipeM.setX(x);
@@ -137,7 +175,10 @@ public class Graphics{
     return pipeM;
   }
 
-  /** Node created to pull in the image to use for the top of the pipe. The dimensions and coordinates for the image are set inside of this method */
+  /**
+  *  Node created to pull in the image to use for the top of the pipe.
+  *  The dimensions and coordinates for the image are set inside of this method.
+  */
   public Node createPipeTop(int x, int y, int w, int h){
     ImageView pipeT = new ImageView("https://raw.githubusercontent.com/RMcCurdy/TeamProjectGroup14/master/Images/pipetop.png?token=ApkDjG3QpMdkdKtqJ4uwSCDIybeWTQbJks5cjg1RwA%3D%3D");
     pipeT.setX(x);
@@ -147,7 +188,10 @@ public class Graphics{
     return pipeT;
   }
 
-  /** Node created to pull in the image to use for the flag pole. The dimensions and coordinates for the image are set inside of this method */
+  /**
+  *  Node created to pull in the image to use for the flag pole.
+  *  The dimensions and coordinates for the image are set inside of this method.
+  */
   public Node createFlagPole(int x, int y, int w, int h){
     ImageView pole = new ImageView("https://raw.githubusercontent.com/RMcCurdy/TeamProjectGroup14/master/Images/flagpole.png?token=ApkDjG3QpMdkdKtqJ4uwSCDIybeWTQbJks5cjg1RwA%3D%3D");
     pole.setX(x);

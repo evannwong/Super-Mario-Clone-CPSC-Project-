@@ -226,7 +226,7 @@ public class Alex extends Game{
       for (Node pole : poles){
        if (graphics.player.getBoundsInParent().intersects(pole.getBoundsInParent())){
          //edit to make the game close and re-open java Screens
-         System.out.println("\nYou completed the level!\nPlease wait 3 seconds for the game to re-load.");
+         System.out.println("\nYou completed the level!\nPlease wait for the game to re-load.");
          try{
           File file = new File("info.txt");
           PrintWriter writer = new PrintWriter(file);
@@ -236,7 +236,7 @@ public class Alex extends Game{
          try {
           //save the amount of coins from the level to txt file
           Runtime.getRuntime().exec("java Screens");
-          Thread.sleep(3000);
+          Thread.sleep(2000);
           System.exit(0);
         } catch (Exception e) {}
        }
@@ -305,7 +305,7 @@ public class Alex extends Game{
       for (Node pole : poles){
         if (graphics.player.getBoundsInParent().intersects(pole.getBoundsInParent())){
           //edit to make the game close and re-open java Screens
-          System.out.println("\nYou completed the level!\nPlease wait 3 seconds for the game to re-load.");
+          System.out.println("\nYou completed the level!\nPlease wait for the game to re-load.");
           try{
             File file = new File("info.txt");
             PrintWriter writer = new PrintWriter(file);
@@ -315,7 +315,7 @@ public class Alex extends Game{
           try {
             //save the amount of coins from the level to txt file
             Runtime.getRuntime().exec("java Screens");
-            Thread.sleep(3000);
+            Thread.sleep(2000);
             System.exit(0);
           } catch (Exception e) {}
         }

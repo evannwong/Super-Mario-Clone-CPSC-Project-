@@ -236,7 +236,7 @@ public class Alex extends Game{
          try {
           //save the amount of coins from the level to txt file
           Runtime.getRuntime().exec("java Screens");
-          Thread.sleep(2000);
+          Thread.sleep(1000);
           System.exit(0);
         } catch (Exception e) {}
        }
@@ -315,7 +315,7 @@ public class Alex extends Game{
           try {
             //save the amount of coins from the level to txt file
             Runtime.getRuntime().exec("java Screens");
-            Thread.sleep(2000);
+            Thread.sleep(1000);
             System.exit(0);
           } catch (Exception e) {}
         }

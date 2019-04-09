@@ -2,6 +2,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.Node;
 import javafx.scene.image.ImageView;
+import javafx.scene.image.Image;
 
 
 public class Graphics{
@@ -9,14 +10,16 @@ public class Graphics{
   *  An ImageView is created in order to pull in the specific image to use for the character.
   *  The width, height, x coord, and y coord are set inside of Game.java.
   */
-  ImageView player = new ImageView("https://raw.githubusercontent.com/RMcCurdy/TeamProjectGroup14/master/Images/alejandro-1.png?token=ApkDjG3QpMdkdKtqJ4uwSCDIybeWTQbJks5cjg1RwA%3D%3D");
+  Image temp = new Image("/Images/alejandro-1.png");
+  ImageView player = new ImageView(temp);
 
   /**
   *  Node created to pull in the image to use for the enemy.
   *  The dimensions and coordinates for the image are set inside of this method.
   */
   public ImageView createEnemy(int x, int y){
-    ImageView entity = new ImageView("https://raw.githubusercontent.com/RMcCurdy/TeamProjectGroup14/master/Images/goombaFIX.png");
+    Image temp = new Image("/Images/goombaFIX.png");
+    ImageView entity = new ImageView(temp);
     entity.setTranslateX(x);
     entity.setTranslateY(y);
     entity.setFitWidth(28);
@@ -40,7 +43,8 @@ public class Graphics{
   *  The dimensions and coordinates for the image are set inside of this method.
   */
   public Node createBrick(int x, int y, int w, int h){
-    ImageView entity = new ImageView("https://raw.githubusercontent.com/RMcCurdy/TeamProjectGroup14/master/Images/brick.png?token=ApkDjG3QpMdkdKtqJ4uwSCDIybeWTQbJks5cjg1RwA%3D%3D");
+    Image temp = new Image("/Images/brick.png");
+    ImageView entity = new ImageView(temp);
     entity.setX(x);
     entity.setY(y);
     entity.setFitHeight(h);
@@ -53,7 +57,8 @@ public class Graphics{
   *  The dimensions and coordinates for the image are set inside of this method.
   */
   public Node createFinalBrick(int x, int y, int w, int h){
-    ImageView Fentity = new ImageView("https://raw.githubusercontent.com/RMcCurdy/TeamProjectGroup14/master/Images/bowserPlatform.png?token=ApkDjG3QpMdkdKtqJ4uwSCDIybeWTQbJks5cjg1RwA%3D%3D");
+    Image temp = new Image("/Images/bowserPlatform.png");
+    ImageView Fentity = new ImageView(temp);
     Fentity.setX(x);
     Fentity.setY(y);
     Fentity.setFitHeight(h);
@@ -63,7 +68,8 @@ public class Graphics{
 
   /** Node created to pull in the image to use for the coin. The dimensions and coordinates for the image are set inside of this method */
   public Node createCoin(int x, int y, int w, int h){
-    ImageView coin = new ImageView("https://raw.githubusercontent.com/RMcCurdy/TeamProjectGroup14/master/Images/frame1-sky3.png?token=ApkDjG3QpMdkdKtqJ4uwSCDIybeWTQbJks5cjg1RwA%3D%3D");
+    Image temp = new Image("/Images/frame1-sky3.png");
+    ImageView coin = new ImageView(temp);
     coin.setX(x);
     coin.setY(y);
     coin.setFitWidth(w);
@@ -76,7 +82,8 @@ public class Graphics{
   *  The dimensions and coordinates for the image are set inside of this method.
   */
   public Node createSpecialCoin(int x, int y, int w, int h){
-    ImageView Scoin = new ImageView("https://raw.githubusercontent.com/RMcCurdy/TeamProjectGroup14/master/Images/specialCoin.png?token=ApkDjG3QpMdkdKtqJ4uwSCDIybeWTQbJks5cjg1RwA%3D%3D");
+    Image temp = new Image("/Images/specialCoin.png");
+    ImageView Scoin = new ImageView(temp);
     Scoin.setX(x);
     Scoin.setY(y);
     Scoin.setFitWidth(w);
@@ -89,7 +96,8 @@ public class Graphics{
   *  The dimensions and coordinates for the image are set inside of this method.
   */
   public Node createGround(int x, int y, int w, int h){
-    ImageView ground = new ImageView("https://raw.githubusercontent.com/RMcCurdy/TeamProjectGroup14/master/Images/ground64by64.png?token=ApkDjG3QpMdkdKtqJ4uwSCDIybeWTQbJks5cjg1RwA%3D%3D");
+    Image temp = new Image("/Images/ground64by64.png");
+    ImageView ground = new ImageView(temp);
     ground.setX(x);
     ground.setY(y);
     ground.setFitWidth(w);
@@ -102,7 +110,8 @@ public class Graphics{
   *  The dimensions and coordinates for the image are set inside of this method.
   */
   public Node createFinalGround(int x, int y, int w, int h){
-    ImageView Fground = new ImageView("https://raw.githubusercontent.com/RMcCurdy/TeamProjectGroup14/master/Images/bowserBrick.png?token=ApkDjG3QpMdkdKtqJ4uwSCDIybeWTQbJks5cjg1RwA%3D%3D");
+    Image temp = new Image("/Images/bowserBrick.png");
+    ImageView Fground = new ImageView(temp);
     Fground.setX(x);
     Fground.setY(y);
     Fground.setFitWidth(w);
@@ -115,7 +124,8 @@ public class Graphics{
   *  The dimensions and coordinates for the image are set inside of this method.
   */
   public Node createCloud(int x, int y, int w, int h){
-    ImageView cloud = new ImageView("https://raw.githubusercontent.com/RMcCurdy/TeamProjectGroup14/master/Images/cloud32by64.png?token=ApkDjG3QpMdkdKtqJ4uwSCDIybeWTQbJks5cjg1RwA%3D%3D");
+    Image temp = new Image("/Images/cloud32by64.png");
+    ImageView cloud = new ImageView(temp);
     cloud.setX(x);
     cloud.setY(y);
     cloud.setFitWidth(w);
@@ -128,7 +138,8 @@ public class Graphics{
   *  The dimensions and coordinates for the image are set inside of this method.
   */
   public Node createBack(int x, int y, int w, int h){
-    ImageView back = new ImageView("https://raw.githubusercontent.com/RMcCurdy/TeamProjectGroup14/master/Images/background-sky3.png?token=ApkDjG3QpMdkdKtqJ4uwSCDIybeWTQbJks5cjg1RwA%3D%3D");
+    Image temp = new Image("/Images/background-sky3.png");
+    ImageView back = new ImageView(temp);
     back.setX(x);
     back.setY(y);
     back.setFitWidth(w);
@@ -141,7 +152,8 @@ public class Graphics{
   *  The dimensions and coordinates for the image are set inside of this method.
   */
   public ImageView createBowser(int x, int y){
-    ImageView bowser = new ImageView("https://raw.githubusercontent.com/RMcCurdy/TeamProjectGroup14/master/Images/bowser.png");
+    Image temp = new Image("/Images/bowser.png");
+    ImageView bowser = new ImageView(temp);
     bowser.setTranslateX(x);
     bowser.setTranslateY(y);
     bowser.setFitWidth(28);
@@ -154,7 +166,8 @@ public class Graphics{
   *  The dimensions and coordinates for the image are set inside of this method.
   */
   public Node createFinalBack(int x, int y, int w, int h){
-    ImageView Fback = new ImageView("https://raw.githubusercontent.com/RMcCurdy/TeamProjectGroup14/master/Images/wallUpdated.png?token=ApkDjG3QpMdkdKtqJ4uwSCDIybeWTQbJks5cjg1RwA%3D%3D");
+    Image temp = new Image("/Images/wallUpdated.png");
+    ImageView Fback = new ImageView(temp);
     Fback.setX(x);
     Fback.setY(y);
     Fback.setFitWidth(w);
@@ -167,7 +180,8 @@ public class Graphics{
   *  The dimensions and coordinates for the image are set inside of this method.
   */
   public Node createPipeMain(int x, int y, int w, int h){
-    ImageView pipeM = new ImageView("https://raw.githubusercontent.com/RMcCurdy/TeamProjectGroup14/master/Images/pipemain.png?token=ApkDjG3QpMdkdKtqJ4uwSCDIybeWTQbJks5cjg1RwA%3D%3D");
+    Image temp = new Image("/Images/pipemain.png");
+    ImageView pipeM = new ImageView(temp);
     pipeM.setX(x);
     pipeM.setY(y);
     pipeM.setFitWidth(w);
@@ -180,7 +194,8 @@ public class Graphics{
   *  The dimensions and coordinates for the image are set inside of this method.
   */
   public Node createPipeTop(int x, int y, int w, int h){
-    ImageView pipeT = new ImageView("https://raw.githubusercontent.com/RMcCurdy/TeamProjectGroup14/master/Images/pipetop.png?token=ApkDjG3QpMdkdKtqJ4uwSCDIybeWTQbJks5cjg1RwA%3D%3D");
+    Image temp = new Image("/Images/pipetop.png");
+    ImageView pipeT = new ImageView(temp);
     pipeT.setX(x);
     pipeT.setY(y);
     pipeT.setFitWidth(w);
@@ -193,7 +208,8 @@ public class Graphics{
   *  The dimensions and coordinates for the image are set inside of this method.
   */
   public Node createFlagPole(int x, int y, int w, int h){
-    ImageView pole = new ImageView("https://raw.githubusercontent.com/RMcCurdy/TeamProjectGroup14/master/Images/flagpole.png?token=ApkDjG3QpMdkdKtqJ4uwSCDIybeWTQbJks5cjg1RwA%3D%3D");
+    Image temp = new Image("/Images/flagpole.png");
+    ImageView pole = new ImageView(temp);
     pole.setX(x);
     pole.setY(y);
     pole.setFitWidth(w);

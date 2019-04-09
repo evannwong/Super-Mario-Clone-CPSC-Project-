@@ -39,36 +39,29 @@ public class Screens extends Application {
     Pane rootMenu = new Pane();
     Pane rootLevels = new Pane();
     Pane rootSkin = new Pane();
-    Pane rootLoad = new Pane();
     Scene menuScreen = new Scene(rootMenu, 750.0, 480.0);
     Scene levelsScreen = new Scene(rootLevels, 750.0, 480.0);
     Scene skinScreen = new Scene(rootSkin, 750.0, 480.0);
-    Scene loadingScreen = new Scene(rootLoad, 750.0, 480.0);
 
 /**
 *  Backgrounds
 */
-    Image mainMenu = new Image("https://raw.githubusercontent.com/RMcCurdy/TeamProjectGroup14/master/Images/background%20main%20menu%20blank.png");
+    Image mainMenu = new Image("/Images/background main menu blank.png");
     BackgroundImage mainMenuBackground = new BackgroundImage(mainMenu, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, new BackgroundSize(BackgroundSize.AUTO, BackgroundSize.AUTO, false, false, true, false));
     Background mmBackground = new Background(mainMenuBackground);
     rootMenu.setBackground(mmBackground);
 
-    Image levels = new Image("https://raw.githubusercontent.com/RMcCurdy/TeamProjectGroup14/master/Images/sample%20level%20select%20blank.png");
+    Image levels = new Image("/Images/sample level select blank.png");
     BackgroundImage levelsBackground = new BackgroundImage(levels, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, new BackgroundSize(BackgroundSize.AUTO, BackgroundSize.AUTO, false, false, true, false));
     Background lBackground = new Background(levelsBackground);
     rootLevels.setBackground(lBackground);
 
-    Image skin = new Image("https://raw.githubusercontent.com/RMcCurdy/TeamProjectGroup14/master/Images/sample%20skins%20selection%20blank.png");
+    Image skin = new Image("/Images/sample skins selection blank.png");
     BackgroundImage skinBackground = new BackgroundImage(skin, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, new BackgroundSize(BackgroundSize.AUTO, BackgroundSize.AUTO, false, false, true, false));
     Background sBackground = new Background(skinBackground);
     rootSkin.setBackground(sBackground);
 
-    Image load = new Image("https://static.giantbomb.com/uploads/scale_small/0/1978/427550-now_loading_2.jpg");
-    BackgroundImage loadBackground = new BackgroundImage(load, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, new BackgroundSize(BackgroundSize.AUTO, BackgroundSize.AUTO, false, false, true, false));
-    Background loBackground = new Background(loadBackground);
-    rootLoad.setBackground(loBackground);
-
-    ImageView coins = new ImageView("https://raw.githubusercontent.com/RMcCurdy/TeamProjectGroup14/master/Images/frame1-sky3.png?token=ApkDjG3QpMdkdKtqJ4uwSCDIybeWTQbJks5cjg1RwA%3D%3D");
+    ImageView coins = new ImageView("/Images/frame1-sky3.png");
     coins.setFitWidth(32);
     coins.setFitHeight(32);
     coins.setX(650);
@@ -81,7 +74,7 @@ public class Screens extends Application {
 /**
 *  Main Menu screen
 */
-    Image levelsImage = new Image("https://raw.githubusercontent.com/RMcCurdy/TeamProjectGroup14/master/Images/levels.png");
+    Image levelsImage = new Image("/Images/levels.png");
     ImageView levelsButton = new ImageView();
     levelsButton.setImage(levelsImage);
     levelsButton.setFitWidth(152.0);
@@ -97,7 +90,7 @@ public class Screens extends Application {
       }
     });
 
-    Image skinImage = new Image("https://raw.githubusercontent.com/RMcCurdy/TeamProjectGroup14/master/Images/skins.png");
+    Image skinImage = new Image("/Images/skins.png");
     ImageView skinButton = new ImageView();
     skinButton.setImage(skinImage);
     skinButton.setFitWidth(152.0);
@@ -144,11 +137,11 @@ public class Screens extends Application {
 /**
 *  Levels screen
 */
-    Image imageLvl1 = new Image("https://raw.githubusercontent.com/RMcCurdy/TeamProjectGroup14/master/Images/button-1.png");
-    Image imageLvl2 = new Image("https://raw.githubusercontent.com/RMcCurdy/TeamProjectGroup14/master/Images/button-2.png");
-    Image imageLvl3 = new Image("https://raw.githubusercontent.com/RMcCurdy/TeamProjectGroup14/master/Images/button-3.png");
-    Image imageLvl4 = new Image("https://raw.githubusercontent.com/RMcCurdy/TeamProjectGroup14/master/Images/button-4.png");
-    Image imageLvl5 = new Image("https://raw.githubusercontent.com/RMcCurdy/TeamProjectGroup14/master/Images/button-5.png");
+    Image imageLvl1 = new Image("/Images/button-1.png");
+    Image imageLvl2 = new Image("/Images/button-2.png");
+    Image imageLvl3 = new Image("/Images/button-3.png");
+    Image imageLvl4 = new Image("/Images/button-4.png");
+    Image imageLvl5 = new Image("/Images/button-5.png");
 
     ImageView lvl1 = new ImageView();
     lvl1.setImage(imageLvl1);
@@ -179,7 +172,7 @@ public class Screens extends Application {
         } catch(Exception e){}
       }
     });
-    
+
     ImageView lvl3 = new ImageView();
     lvl3.setImage(imageLvl3);
 
@@ -194,7 +187,7 @@ public class Screens extends Application {
         } catch(Exception e){}
       }
     });
-    
+
     ImageView lvl4 = new ImageView();
     lvl4.setImage(imageLvl4);
 
@@ -209,7 +202,7 @@ public class Screens extends Application {
         } catch(Exception e){}
       }
     });
-    
+
     ImageView lvl5 = new ImageView();
     lvl5.setImage(imageLvl5);
 
@@ -253,7 +246,7 @@ public class Screens extends Application {
     rootLevels.getChildren().add(lvl4);
     rootLevels.getChildren().add(lvl5);
 
-    Image backButton = new Image("https://raw.githubusercontent.com/RMcCurdy/TeamProjectGroup14/master/Images/backButton.png");
+    Image backButton = new Image("/Images/backButton.png");
     ImageView bButton = new ImageView();
     bButton.setImage(backButton);
     bButton.setFitWidth(87.0);
@@ -396,14 +389,14 @@ public class Screens extends Application {
 /**
 *  Skin screen
 */
-    Image border = new Image("https://raw.githubusercontent.com/RMcCurdy/TeamProjectGroup14/master/Images/borderSelection.png");
+    Image border = new Image("/Images/borderSelection.png");
     ImageView borderS = new ImageView();
     borderS.setFitWidth(100.0);
     borderS.setFitHeight(225.0);
 
     boolean pressed = false;
 
-    Image backButton2 = new Image("https://raw.githubusercontent.com/RMcCurdy/TeamProjectGroup14/master/Images/backButton.png");
+    Image backButton2 = new Image("/Images/backButton.png");
     ImageView bButton2 = new ImageView();
     bButton2.setImage(backButton2);
     bButton2.setFitWidth(87.0);
@@ -416,7 +409,7 @@ public class Screens extends Application {
       }
     });
 
-    Image imageSkin1 = new Image("https://raw.githubusercontent.com/RMcCurdy/TeamProjectGroup14/master/Images/alejandro-1.png");
+    Image imageSkin1 = new Image("/Images/alejandro-1.png");
     ImageView skin1 = new ImageView();
     skin1.setImage(imageSkin1);
     skin1.setOnMouseClicked(new EventHandler<MouseEvent>() {
@@ -433,8 +426,8 @@ public class Screens extends Application {
         } catch(Exception e){}
       }
     });
-    
-    Image imageSkin2 = new Image("https://raw.githubusercontent.com/RMcCurdy/TeamProjectGroup14/master/Images/alejandro-2.png");
+
+    Image imageSkin2 = new Image("/Images/alejandro-2.png");
     ImageView skin2 = new ImageView();
     skin2.setImage(imageSkin2);
     skin2.setOnMouseClicked(new EventHandler<MouseEvent>() {
@@ -452,7 +445,7 @@ public class Screens extends Application {
       }
     });
 
-    Image imageSkin3 = new Image("https://raw.githubusercontent.com/RMcCurdy/TeamProjectGroup14/master/Images/alejandro-3.png");
+    Image imageSkin3 = new Image("/Images/alejandro-3.png");
     ImageView skin3 = new ImageView();
     skin3.setImage(imageSkin3);
     skin3.setOnMouseClicked(new EventHandler<MouseEvent>() {
@@ -470,7 +463,7 @@ public class Screens extends Application {
       }
     });
 
-    Image imageSkin4 = new Image("https://raw.githubusercontent.com/RMcCurdy/TeamProjectGroup14/master/Images/alejandro-4.png");
+    Image imageSkin4 = new Image("/Images/alejandro-4.png");
     ImageView skin4 = new ImageView();
     skin4.setImage(imageSkin4);
     skin4.setOnMouseClicked(new EventHandler<MouseEvent>() {
@@ -488,7 +481,7 @@ public class Screens extends Application {
       }
     });
 
-    Image imageSkin5 = new Image("https://raw.githubusercontent.com/RMcCurdy/TeamProjectGroup14/master/Images/alejandro-5.png");
+    Image imageSkin5 = new Image("/Images/alejandro-5.png");
     ImageView skin5 = new ImageView();
     skin5.setImage(imageSkin5);
     skin5.setOnMouseClicked(new EventHandler<MouseEvent>() {

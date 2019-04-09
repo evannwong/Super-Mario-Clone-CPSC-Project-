@@ -11,6 +11,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import javafx.scene.image.ImageView;
+import javafx.scene.image.Image;
 import java.io.*;
 
 public class Alex extends Game{
@@ -18,6 +19,7 @@ public class Alex extends Game{
   private boolean canJump = true;
   private boolean walking = false;
   private boolean onLand = true;
+  private boolean runOnce = true;
 
   /**
   *  Checks if any key is pressed, and returns either the key itself if it is true, or false otherwise.
@@ -55,9 +57,10 @@ public class Alex extends Game{
 
     if (isPressed(KeyCode.A) && graphics.player.getTranslateX() >= 5){
       // add something to change character image to look left
+      runOnce = true;
       if (!walking){
-        ImageView temp = new ImageView("https://raw.githubusercontent.com/RMcCurdy/TeamProjectGroup14/master/Images/alejandroTest.png");
-        temp.setTranslateX(graphics.player.getTranslateX());
+        Image temp1 = new Image("/Images/alejandroTest.png");
+        ImageView temp = new ImageView(temp1);        temp.setTranslateX(graphics.player.getTranslateX());
         temp.setTranslateY(graphics.player.getTranslateY());
         temp.setFitWidth(28);
         temp.setFitHeight(60);
@@ -78,8 +81,10 @@ public class Alex extends Game{
 
     if (isPressed(KeyCode.D) && graphics.player.getTranslateX() + 28 <= levelWidth - 5){
       // add something to change character image to look right
+      runOnce = true;
       if (!walking){
-        ImageView temp = new ImageView("https://raw.githubusercontent.com/RMcCurdy/TeamProjectGroup14/master/Images/alejandroTest.png");
+        Image temp1 = new Image("/Images/alejandroTest.png");
+        ImageView temp = new ImageView(temp1);
         temp.setTranslateX(graphics.player.getTranslateX());
         temp.setTranslateY(graphics.player.getTranslateY());
         temp.setFitWidth(28);
@@ -100,22 +105,26 @@ public class Alex extends Game{
     }
 
     if (!isPressed(KeyCode.A) && !isPressed(KeyCode.D) && playerVelocity.getX() < 1 && playerVelocity.getX() > -1 && playerVelocity.getY() == 10 && onLand){
-      ImageView temp = new ImageView("https://raw.githubusercontent.com/RMcCurdy/TeamProjectGroup14/master/Images/alejandro-1.png?token=ApkDjG3QpMdkdKtqJ4uwSCDIybeWTQbJks5cjg1RwA%3D%3D");
-      temp.setTranslateX(graphics.player.getTranslateX());
-      temp.setTranslateY(graphics.player.getTranslateY());
-      temp.setFitWidth(28);
-      temp.setFitHeight(60);
-      environmentRoot.getChildren().remove(graphics.player);
-      graphics.player = temp;
-      walking = false;
-      environmentRoot.getChildren().add(graphics.player);
-      graphics.player.translateXProperty().addListener((obs, old, newValue) -> {
-        int offset = newValue.intValue();
+      if (runOnce){
+        Image temp1 = new Image("/Images/alejandro-1.png");
+        ImageView temp = new ImageView(temp1);
+        temp.setTranslateX(graphics.player.getTranslateX());
+        temp.setTranslateY(graphics.player.getTranslateY());
+        temp.setFitWidth(28);
+        temp.setFitHeight(60);
+        environmentRoot.getChildren().remove(graphics.player);
+        graphics.player = temp;
+        walking = false;
+        environmentRoot.getChildren().add(graphics.player);
+        graphics.player.translateXProperty().addListener((obs, old, newValue) -> {
+          int offset = newValue.intValue();
 
-        if (offset > 400 && offset < levelWidth - 400){ //Scrolling feature
-          environmentRoot.setLayoutX(-(offset - 400));
-        }
-      });
+          if (offset > 400 && offset < levelWidth - 400){ //Scrolling feature
+            environmentRoot.setLayoutX(-(offset - 400));
+          }
+        });
+        runOnce = false;
+      }
     }
 
     if (playerVelocity.getY() < 10){
@@ -193,7 +202,7 @@ public class Alex extends Game{
       for (Node pole : poles){
        if (graphics.player.getBoundsInParent().intersects(pole.getBoundsInParent())){
          //edit to make the game close and re-open java Screens
-         System.out.println("\nYou completed the level!\nPlease wait 5 seconds for the game to re-load.");
+         System.out.println("\nYou completed the level!\nPlease wait 3 seconds for the game to re-load.");
          try{
           File file = new File("info.txt");
           PrintWriter writer = new PrintWriter(file);
@@ -203,7 +212,7 @@ public class Alex extends Game{
          try {
           //save the amount of coins from the level to txt file
           Runtime.getRuntime().exec("java Screens");
-          Thread.sleep(5000);
+          Thread.sleep(3000);
           System.exit(0);
         } catch (Exception e) {}
        }
@@ -272,7 +281,7 @@ public class Alex extends Game{
       for (Node pole : poles){
         if (graphics.player.getBoundsInParent().intersects(pole.getBoundsInParent())){
           //edit to make the game close and re-open java Screens
-          System.out.println("\nYou completed the level!\nPlease wait 5 seconds for the game to re-load.");
+          System.out.println("\nYou completed the level!\nPlease wait 3 seconds for the game to re-load.");
           try{
             File file = new File("info.txt");
             PrintWriter writer = new PrintWriter(file);
@@ -282,7 +291,7 @@ public class Alex extends Game{
           try {
             //save the amount of coins from the level to txt file
             Runtime.getRuntime().exec("java Screens");
-            Thread.sleep(5000);
+            Thread.sleep(3000);
             System.exit(0);
           } catch (Exception e) {}
         }
@@ -296,11 +305,10 @@ public class Alex extends Game{
               playerVelocity = new Point2D(0, 0);
               playerVelocity = playerVelocity.add(0, -4);
             }
-          }
-          if (graphics.player.getTranslateX() == goombas.get(numG).getTranslateX() + 28){
+          } else if (graphics.player.getTranslateX() <= goombas.get(numG).getTranslateX() + 28){
             die();
             System.out.println("\nOOF, looks like you're not good enough...");
-          } else if (graphics.player.getTranslateX() + 28 == goombas.get(numG).getTranslateX()){
+          } else if (graphics.player.getTranslateX() + 28 >= goombas.get(numG).getTranslateX()){
             die();
             System.out.println("\nOOF, looks like you're not good enough...");
           }

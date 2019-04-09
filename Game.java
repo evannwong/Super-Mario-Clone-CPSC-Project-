@@ -11,6 +11,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import javafx.scene.image.ImageView;
+import javafx.scene.image.Image;
 import javafx.scene.text.Text;
 import javafx.scene.text.Font;
 import java.io.*;
@@ -59,13 +60,14 @@ public abstract class Game{
     environmentRoot.setPrefSize(800, 640);
     menuRoot.setPrefSize(800, 640);
 
-    ImageView coinLogo = new ImageView("https://raw.githubusercontent.com/RMcCurdy/TeamProjectGroup14/master/Images/frame1-sky3.png?token=ApkDjG3QpMdkdKtqJ4uwSCDIybeWTQbJks5cjg1RwA%3D%3D");
+    Image temp = new Image("/Images/frame1-sky3.png");
+    ImageView coinLogo = new ImageView(temp);
     coinLogo.setFitWidth(20);
     coinLogo.setFitHeight(20);
     coinLogo.setX(700);
     coinLogo.setY(20);
     menuRoot.getChildren().add(coinLogo);
-    coinCount = new Text(750, 40, coinCounter + "");
+    coinCount = new Text(725, 37, coinCounter + "");
     coinCount.setFont(Font.font ("Verdana", 20));
     menuRoot.getChildren().add(coinCount);
 

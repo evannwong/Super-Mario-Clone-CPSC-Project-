@@ -39,12 +39,13 @@ public abstract class Game{
   protected int levelHeight = 0;
   protected int coinCounter = 0;
   protected Text coinCount;
+  protected Image skinChosen;
   String line = "";
 
   /**
   *Method for initializing the game window, and the environment.
   */
-  public void initContent(int level, int skin){
+  public void initContent(int level){
     /**
     * Checks for a save file, and loads in the amount of coins
     */
@@ -194,21 +195,8 @@ public abstract class Game{
       }
     }
 
-    if (skin == 1){
-      graphics.player = new ImageView("https://raw.githubusercontent.com/RMcCurdy/TeamProjectGroup14/master/Images/alejandro-1.png");
-    }
-    if (skin == 2){
-      graphics.player = new ImageView("https://raw.githubusercontent.com/RMcCurdy/TeamProjectGroup14/master/Images/alejandro-2.png");
-    }
-    if (skin == 3){
-      graphics.player = new ImageView("https://raw.githubusercontent.com/RMcCurdy/TeamProjectGroup14/master/Images/alejandro-3.png");
-    }
-    if (skin == 4){
-      graphics.player = new ImageView("https://raw.githubusercontent.com/RMcCurdy/TeamProjectGroup14/master/Images/alejandro-4.png");
-    }
-    if (skin == 5){
-      graphics.player = new ImageView("https://raw.githubusercontent.com/RMcCurdy/TeamProjectGroup14/master/Images/alejandro-5.png");
-    }
+    Image originalSkin = new Image("/Images/alejandro-1.png");
+    graphics.player = new ImageView(originalSkin);
     graphics.player.setTranslateX(30);
     graphics.player.setTranslateY(500);
     graphics.player.setFitWidth(28);
@@ -227,4 +215,6 @@ public abstract class Game{
   }
 
   public abstract void update();
+
+  public abstract void initChar(int aSkin);
 }

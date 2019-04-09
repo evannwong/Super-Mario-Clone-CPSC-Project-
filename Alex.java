@@ -20,12 +20,43 @@ public class Alex extends Game{
   private boolean walking = false;
   private boolean onLand = true;
   private boolean runOnce = true;
+  private Image skinRight;
+  private Image skinLeft;
+  private Image skinIdle;
 
   /**
   *  Checks if any key is pressed, and returns either the key itself if it is true, or false otherwise.
   */
   private boolean isPressed(KeyCode key){
     return keys.getOrDefault(key, false);
+  }
+
+  public void initChar(int skinVar){
+    if (skinVar == 1 || skinVar == 0){
+      this.skinIdle = new Image("/Images/alejandro-1.png");
+      this.skinRight = new Image("/Images/alejandro-1WalkRight.png");
+      this.skinLeft = new Image("/Images/alejandro-1WalkLeft.png");
+    }
+    if (skinVar == 2){
+      this.skinIdle = new Image("/Images/alejandro-2.png");
+      this.skinRight = new Image("/Images/alejandro-2WalkRight.png");
+      this.skinLeft = new Image("/Images/alejandro-2WalkLeft.png");
+    }
+    if (skinVar == 3){
+      this.skinIdle = new Image("/Images/alejandro-3.png");
+      this.skinRight = new Image("/Images/alejandro-3WalkRight.png");
+      this.skinLeft = new Image("/Images/alejandro-3WalkLeft.png");
+    }
+    if (skinVar == 4){
+      this.skinIdle = new Image("/Images/alejandro-4.png");
+      this.skinRight = new Image("/Images/alejandro-4WalkRight.png");
+      this.skinLeft = new Image("/Images/alejandro-4WalkLeft.png");
+    }
+    if (skinVar == 5){
+      this.skinIdle = new Image("/Images/alejandro-5.png");
+      this.skinRight = new Image("/Images/alejandro-5WalkRight.png");
+      this.skinLeft = new Image("/Images/alejandro-5WalkLeft.png");
+    }
   }
 
   /**
@@ -58,63 +89,56 @@ public class Alex extends Game{
     if (isPressed(KeyCode.A) && graphics.player.getTranslateX() >= 5){
       // add something to change character image to look left
       runOnce = true;
-      if (!walking){
-        Image temp1 = new Image("/Images/alejandroTest.png");
-        ImageView temp = new ImageView(temp1);        temp.setTranslateX(graphics.player.getTranslateX());
-        temp.setTranslateY(graphics.player.getTranslateY());
-        temp.setFitWidth(28);
-        temp.setFitHeight(60);
-        environmentRoot.getChildren().remove(graphics.player);
-        graphics.player = temp;
-        environmentRoot.getChildren().add(graphics.player);
-        walking = true;
-        graphics.player.translateXProperty().addListener((obs, old, newValue) -> {
-          int offset = newValue.intValue();
+      ImageView temp = new ImageView(skinLeft);
+      temp.setTranslateX(graphics.player.getTranslateX());
+      temp.setTranslateY(graphics.player.getTranslateY());
+      temp.setFitWidth(28);
+      temp.setFitHeight(60);
+      environmentRoot.getChildren().remove(graphics.player);
+      graphics.player = temp;
+      environmentRoot.getChildren().add(graphics.player);
+      walking = true;
+      graphics.player.translateXProperty().addListener((obs, old, newValue) -> {
+        int offset = newValue.intValue();
 
-          if (offset > 400 && offset < levelWidth - 400){ //Scrolling feature
-            environmentRoot.setLayoutX(-(offset - 400));
-          }
-        });
-      }
+        if (offset > 400 && offset < levelWidth - 400){ //Scrolling feature
+          environmentRoot.setLayoutX(-(offset - 400));
+        }
+      });
       movePlayerX(-3);
     }
 
     if (isPressed(KeyCode.D) && graphics.player.getTranslateX() + 28 <= levelWidth - 5){
       // add something to change character image to look right
       runOnce = true;
-      if (!walking){
-        Image temp1 = new Image("/Images/alejandroTest.png");
-        ImageView temp = new ImageView(temp1);
-        temp.setTranslateX(graphics.player.getTranslateX());
-        temp.setTranslateY(graphics.player.getTranslateY());
-        temp.setFitWidth(28);
-        temp.setFitHeight(60);
-        environmentRoot.getChildren().remove(graphics.player);
-        graphics.player = temp;
-        environmentRoot.getChildren().add(graphics.player);
-        walking = true;
-        graphics.player.translateXProperty().addListener((obs, old, newValue) -> {
-          int offset = newValue.intValue();
+      ImageView temp = new ImageView(skinRight);
+      temp.setTranslateX(graphics.player.getTranslateX());
+      temp.setTranslateY(graphics.player.getTranslateY());
+      temp.setFitWidth(28);
+      temp.setFitHeight(60);
+      environmentRoot.getChildren().remove(graphics.player);
+      graphics.player = temp;
+      environmentRoot.getChildren().add(graphics.player);
+      walking = true;
+      graphics.player.translateXProperty().addListener((obs, old, newValue) -> {
+        int offset = newValue.intValue();
 
-          if (offset > 400 && offset < levelWidth - 400){ //Scrolling feature
-            environmentRoot.setLayoutX(-(offset - 400));
-          }
-        });
-      }
+        if (offset > 400 && offset < levelWidth - 400){ //Scrolling feature
+          environmentRoot.setLayoutX(-(offset - 400));
+        }
+      });
       movePlayerX(3);
     }
 
     if (!isPressed(KeyCode.A) && !isPressed(KeyCode.D) && playerVelocity.getX() < 1 && playerVelocity.getX() > -1 && playerVelocity.getY() == 10 && onLand){
       if (runOnce){
-        Image temp1 = new Image("/Images/alejandro-1.png");
-        ImageView temp = new ImageView(temp1);
+        ImageView temp = new ImageView(skinIdle);
         temp.setTranslateX(graphics.player.getTranslateX());
         temp.setTranslateY(graphics.player.getTranslateY());
         temp.setFitWidth(28);
         temp.setFitHeight(60);
         environmentRoot.getChildren().remove(graphics.player);
         graphics.player = temp;
-        walking = false;
         environmentRoot.getChildren().add(graphics.player);
         graphics.player.translateXProperty().addListener((obs, old, newValue) -> {
           int offset = newValue.intValue();

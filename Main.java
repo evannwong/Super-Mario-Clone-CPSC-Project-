@@ -40,7 +40,8 @@ public class Main extends Application{
     } catch(IOException ioe){
       game.coinCounter = 0;
     }
-    game.initContent(level, skin);
+    game.initContent(level);
+    game.initChar(skin);
     Platform.setImplicitExit(false);
 
     Scene scene = new Scene(game.appRoot);

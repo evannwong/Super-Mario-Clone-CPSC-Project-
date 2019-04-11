@@ -92,6 +92,10 @@ public abstract class Game{
       levelWidth = Environment.LEVEL5[0].length() * 32;
       levelHeight = Environment.LEVEL5.length;
     }
+    if (level == 0){
+      levelWidth = Environment.TEST[0].length() * 32;
+      levelHeight = Environment.TEST.length;
+    }
 
     for (int i = 0; i < levelHeight; i++){
       System.out.println("Loading: " + i*5);

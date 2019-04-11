@@ -151,6 +151,10 @@ public class Alex extends Game{
       }
     }
 
+    applyMomentum();
+  }
+
+  public void applyMomentum(){
     if (playerVelocity.getY() < 10){
       playerVelocity = playerVelocity.add(0, 1);
     }
@@ -169,7 +173,7 @@ public class Alex extends Game{
   /**
   *  Checks if canJump is true, and if it is, adds upwards momentum and moves the player by that amount.
   */
-  private void jumpPlayer(){
+  public void jumpPlayer(){
     if (canJump){
       if (playerVelocity.getY() == 10){
       playerVelocity = playerVelocity.add(0, -31);
@@ -182,7 +186,7 @@ public class Alex extends Game{
   *  Moves the player by an int in the X direction, and checks for collisions with pixel-precision.
   *  Checks for collisions with coins.
   */
-  private void movePlayerX(int value){
+  public void movePlayerX(int value){
     boolean movingRight = value > 0;
     for (int i = 0; i < Math.abs(value); i++){
       for (Node platform : platforms){
@@ -249,7 +253,7 @@ public class Alex extends Game{
   *  Moves the player by an int in the Y direction, and checks for collisions with pixel-precision.
   *  Checks for collision with coin.
   */
-  private void movePlayerY(int value){
+  public void movePlayerY(int value){
     boolean movingDown = value > 0;
     for (int i = 0; i < Math.abs(value); i++){
       for (Node platform : platforms){
@@ -346,5 +350,26 @@ public class Alex extends Game{
     graphics.player.setTranslateX(30);
     graphics.player.setTranslateY(500);
     environmentRoot.setLayoutX(0);
+  }
+
+  //FOR THE TESTS
+
+  public void simulateAPressed(){
+    if (graphics.player.getTranslateX() >= 5){
+      movePlayerX(-3);
+    }
+  }
+
+  public void simulateDPressed(){
+    if (graphics.player.getTranslateX() + 28 <= levelWidth - 5){
+      movePlayerX(3);
+    }
+  }
+
+  public void endGame() throws Exception{
+    File file = new File("info.txt");
+    PrintWriter writer = new PrintWriter(file);
+    writer.println(coinCounter);
+    writer.close();
   }
 }

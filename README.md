@@ -36,3 +36,10 @@ Run the file named Screens using 'java Screens' in the terminal.
 Use 'W' to jump, hold 'W' to jump higher.
 Use 'A' and 'D' to move left and right.
 Use 'SHIFT' to sprint.
+# How to run the final version of the game:
+Simply download all of the files in the master branch.
+Save it to any directory you would like.
+Double click on 'runGame.bat'.
+Use 'W' to jump, hold 'W' to jump higher.
+Use 'A' and 'D' to move left and right.
+Use 'SHIFT' to sprint.

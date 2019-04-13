@@ -20,7 +20,7 @@ public class Bowser extends Enemy{
   protected boolean moveLeft = true;
   public void update(){
     super.update();
-    if (bowserHitCounter >= 24){
+    if (bowserHitCounter >= 28){
       for (ImageView bowser : bowsers){
         bowser.setTranslateY(999);
       }

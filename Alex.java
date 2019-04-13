@@ -15,6 +15,7 @@ import javafx.scene.image.Image;
 import java.io.*;
 import javafx.scene.media.*;
 import java.nio.file.*;
+import javafx.util.Duration;
 
 public class Alex extends Game{
   protected static Point2D playerVelocity = new Point2D(0, 0); // X and Y momentum
@@ -26,6 +27,9 @@ public class Alex extends Game{
   private Image skinLeft;
   private Image skinIdle;
   protected int skinValue;
+  private Media media = new Media(Paths.get(Paths.get(".") + "/Music/SuperMarioBrosCoinSoundEffect.mp3").toUri().toString());
+  private Media stomp = new Media(Paths.get(Paths.get(".") + "/Music/goombadead.mp3").toUri().toString());
+  private MediaPlayer playStomp = new MediaPlayer(stomp);
 
   /**
   *  Checks if any key is pressed, and returns either the key itself if it is true, or false otherwise.
@@ -74,7 +78,18 @@ public class Alex extends Game{
   public void update(){
     coinCount.setText(coinCounter + "");
     if (graphics.player.getTranslateY() > 650){
-      die();
+      try{
+       File file = new File("info.txt");
+       PrintWriter writer = new PrintWriter(file);
+       writer.println(coinCounter);
+       writer.close();
+     } catch(IOException ioe){}
+      try {
+       //save the amount of coins from the level to txt file
+       Runtime.getRuntime().exec("java Screens");
+       Thread.sleep(1000);
+       System.exit(0);
+     } catch (Exception e) {}
     }
     if (isPressed(KeyCode.W)){
       jumpPlayer();
@@ -232,7 +247,6 @@ public class Alex extends Game{
           coin.setVisible(false);
           coin.setTranslateY(900);
           coinCounter += 1;
-          Media media = new Media(Paths.get(Paths.get(".") + "/Music/SuperMarioBrosCoinSoundEffect.mp3").toUri().toString());
           MediaPlayer player = new MediaPlayer(media);
           player.setVolume(0.25);
           player.play();
@@ -314,10 +328,9 @@ public class Alex extends Game{
         if (graphics.player.getBoundsInParent().intersects(coin.getBoundsInParent())){
           coin.setVisible(false);
           coin.setTranslateY(900);
-          Media media = new Media(Paths.get(Paths.get(".") + "/Music/SuperMarioBrosCoinSoundEffect.mp3").toUri().toString());
-          MediaPlayer player = new MediaPlayer(media);
-          player.setVolume(0.25);
-          player.play();
+          MediaPlayer player2 = new MediaPlayer(media);
+          player2.setVolume(0.25);
+          player2.play();
           coinCounter += 1;
           System.out.println("\nCoins collected: " + coinCounter);
         }
@@ -350,10 +363,30 @@ public class Alex extends Game{
               playerVelocity = playerVelocity.add(0, -5);
             }
           } else if (graphics.player.getTranslateX() <= goombas.get(numG).getTranslateX() + 28){
-            die();
+            try{
+             File file = new File("info.txt");
+             PrintWriter writer = new PrintWriter(file);
+             writer.println(coinCounter);
+             writer.close();
+           } catch(IOException ioe){}
+            try {
+             Runtime.getRuntime().exec("java Screens");
+             Thread.sleep(1000);
+             System.exit(0);
+           } catch (Exception e) {}
             System.out.println("\nOOF, looks like you're not good enough...");
           } else if (graphics.player.getTranslateX() + 28 >= goombas.get(numG).getTranslateX()){
-            die();
+            try{
+             File file = new File("info.txt");
+             PrintWriter writer = new PrintWriter(file);
+             writer.println(coinCounter);
+             writer.close();
+           } catch(IOException ioe){}
+            try {
+             Runtime.getRuntime().exec("java Screens");
+             Thread.sleep(1000);
+             System.exit(0);
+           } catch (Exception e) {}
             System.out.println("\nOOF, looks like you're not good enough...");
           }
         }
@@ -363,6 +396,8 @@ public class Alex extends Game{
           if (bowser.getTranslateY() - 35 >= graphics.player.getTranslateY()){
             playerVelocity = playerVelocity.add(0, -4);
             playerVelocity = playerVelocity.add(-1, 0);
+            playStomp.seek(Duration.seconds(0.5));
+            playStomp.play();
             bowserHitCounter += 1;
           } else if (graphics.player.getTranslateX() <= bowser.getTranslateX() + 28){
             try{
@@ -372,7 +407,6 @@ public class Alex extends Game{
              writer.close();
            } catch(IOException ioe){}
             try {
-             //save the amount of coins from the level to txt file
              Runtime.getRuntime().exec("java Screens");
              Thread.sleep(1000);
              System.exit(0);
@@ -385,7 +419,6 @@ public class Alex extends Game{
              writer.close();
            } catch(IOException ioe){}
             try {
-             //save the amount of coins from the level to txt file
              Runtime.getRuntime().exec("java Screens");
              Thread.sleep(1000);
              System.exit(0);

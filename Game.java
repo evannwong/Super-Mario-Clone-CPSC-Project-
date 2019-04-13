@@ -15,6 +15,9 @@ import javafx.scene.image.Image;
 import javafx.scene.text.Text;
 import javafx.scene.text.Font;
 import java.io.*;
+import javafx.scene.media.*;
+import java.nio.file.*;
+import javafx.util.Duration;
 
 public abstract class Game{
   Graphics graphics = new Graphics();
@@ -44,6 +47,10 @@ public abstract class Game{
   protected Image skinChosen;
   protected int levelSelected;
   String line = "";
+
+  Media backgroundMusic = new Media(Paths.get(Paths.get(".") + "/Music/BackgroundMusic.mp3").toUri().toString());
+  MediaPlayer musicPlayer = new MediaPlayer(backgroundMusic);
+
 
   /**
   *Method for initializing the game window, and the environment.
@@ -77,22 +84,49 @@ public abstract class Game{
     menuRoot.getChildren().add(coinCount);
 
     if (level == 1){
+      musicPlayer.setStartTime(Duration.seconds(0));
+      musicPlayer.setStopTime(Duration.seconds(118));
+      musicPlayer.setCycleCount(MediaPlayer.INDEFINITE);
+      musicPlayer.setVolume(0.4);
+      musicPlayer.play();
       levelWidth = Environment.LEVEL1[0].length() * 32;
       levelHeight = Environment.LEVEL1.length;
     }
     if (level == 2){
+      musicPlayer.setStartTime(Duration.seconds(0));
+      musicPlayer.setStopTime(Duration.seconds(118));
+      musicPlayer.setCycleCount(MediaPlayer.INDEFINITE);
+      musicPlayer.setVolume(0.4);
+      musicPlayer.play();
       levelWidth = Environment.LEVEL2[0].length() * 32;
       levelHeight = Environment.LEVEL2.length;
     }
     if (level == 3){
+      musicPlayer.setStartTime(Duration.seconds(0));
+      musicPlayer.setStopTime(Duration.seconds(118));
+      musicPlayer.setCycleCount(MediaPlayer.INDEFINITE);
+      musicPlayer.setVolume(0.4);
+      musicPlayer.play();
       levelWidth = Environment.LEVEL3[0].length() * 32;
       levelHeight = Environment.LEVEL3.length;
     }
     if (level == 4){
+      musicPlayer.setStartTime(Duration.seconds(0));
+      musicPlayer.setStopTime(Duration.seconds(118));
+      musicPlayer.setCycleCount(MediaPlayer.INDEFINITE);
+      musicPlayer.setVolume(0.4);
+      musicPlayer.play();
       levelWidth = Environment.LEVEL4[0].length() * 32;
       levelHeight = Environment.LEVEL4.length;
     }
     if (level == 5){
+      Media backgroundMusic = new Media(Paths.get(Paths.get(".") + "/Music/EndMusic.mp3").toUri().toString());
+      MediaPlayer musicPlayer = new MediaPlayer(backgroundMusic);
+      musicPlayer.setStartTime(Duration.seconds(0));
+      musicPlayer.setStopTime(Duration.seconds(232));
+      musicPlayer.setCycleCount(MediaPlayer.INDEFINITE);
+      musicPlayer.setVolume(0.2);
+      musicPlayer.play();
       levelWidth = Environment.LEVEL5[0].length() * 32;
       levelHeight = Environment.LEVEL5.length;
     }

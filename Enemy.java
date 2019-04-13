@@ -11,8 +11,15 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import javafx.scene.image.ImageView;
+import java.io.*;
+import javafx.scene.media.*;
+import java.nio.file.*;
+import javafx.util.Duration;
+
 
 public class Enemy extends Alex{
+  Media stomp = new Media(Paths.get(Paths.get(".") + "/Music/goombadead.mp3").toUri().toString());
+  MediaPlayer playStomp = new MediaPlayer(stomp);
 
   @Override
   public void update(){
@@ -27,6 +34,8 @@ public class Enemy extends Alex{
         if (goombas.get(numG).getTranslateY() - 35 >= graphics.player.getTranslateY()){
           goombas.get(numG).setVisible(false);
           goombas.get(numG).setTranslateY(goombas.get(numG).getTranslateY() + 100);
+          playStomp.seek(Duration.seconds(0.5));
+          playStomp.play();
           System.out.println("\nYou defeated a goomba!");
         }
       }

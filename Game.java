@@ -125,7 +125,7 @@ public abstract class Game{
       musicPlayer.setStartTime(Duration.seconds(0));
       musicPlayer.setStopTime(Duration.seconds(232));
       musicPlayer.setCycleCount(MediaPlayer.INDEFINITE);
-      musicPlayer.setVolume(0.2);
+      musicPlayer.setVolume(0.1);
       musicPlayer.play();
       levelWidth = Environment.LEVEL5[0].length() * 32;
       levelHeight = Environment.LEVEL5.length;
